@@ -16,8 +16,17 @@ _global_script_class_icons={
 [application]
 
 config/name="Project A"
+run/main_scene="res://test.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=640
+window/size/height=360
+window/stretch/mode="viewport"
 
 [rendering]
 
+quality/2d/use_pixel_snap=true
+environment/default_clear_color=Color( 0.317647, 0.317647, 0.317647, 1 )
 environment/default_environment="res://default_env.tres"
