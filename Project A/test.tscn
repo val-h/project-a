@@ -1,0 +1,14 @@
+[gd_scene format=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+margin_left = 815.0
+margin_top = 482.0
+margin_right = 1024.0
+margin_bottom = 600.0
+custom_colors/font_color = Color( 0.160784, 0.160784, 0.160784, 0.52549 )
+text = "Work in Progress"
+align = 1
+valign = 1
+uppercase = true
