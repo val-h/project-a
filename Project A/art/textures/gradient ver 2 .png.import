@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/star cluster1.png-c4898e7018f41e53282f1d075382c8f2.stex"
+path="res://.import/gradient ver 2 .png-f31c329fcf9a88d345442f8892878e0b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/star_clusters/star cluster1.png"
-dest_files=[ "res://.import/star cluster1.png-c4898e7018f41e53282f1d075382c8f2.stex" ]
+source_file="res://art/textures/gradient ver 2 .png"
+dest_files=[ "res://.import/gradient ver 2 .png-f31c329fcf9a88d345442f8892878e0b.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/star cluster6.png-8d7956007f4d6d601ea0d309ff1d20f9.stex"
+path="res://.import/ship.png-5cc001f9809984afd6bc62e07e07b81b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/star_clusters/star cluster6.png"
-dest_files=[ "res://.import/star cluster6.png-8d7956007f4d6d601ea0d309ff1d20f9.stex" ]
+source_file="res://art/charecters/ship.png"
+dest_files=[ "res://.import/ship.png-5cc001f9809984afd6bc62e07e07b81b.stex" ]
 
 [params]
 

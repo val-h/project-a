@@ -1,0 +1,120 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://space_tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://art/textures/star_clusters/star cluster1.png" type="Texture" id=2]
+[ext_resource path="res://art/textures/star_clusters/star cluster5.png" type="Texture" id=3]
+[ext_resource path="res://art/textures/star_clusters/star cluster3.png" type="Texture" id=4]
+[ext_resource path="res://art/textures/space/space texture3.png" type="Texture" id=5]
+[ext_resource path="res://art/textures/space/space texture4.png" type="Texture" id=6]
+[ext_resource path="res://art/planet.png" type="Texture" id=7]
+[ext_resource path="res://fonts/karma_font.tres" type="DynamicFont" id=8]
+[ext_resource path="res://levels/Player.gd" type="Script" id=9]
+[ext_resource path="res://art/charecters/toaster.png" type="Texture" id=10]
+
+[sub_resource type="TileSet" id=1]
+0/name = "star cluster1.png 0"
+0/texture = ExtResource( 2 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 128, 128 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shapes = [  ]
+0/z_index = 0
+1/name = "star cluster5.png 1"
+1/texture = ExtResource( 3 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 128, 128 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shapes = [  ]
+1/z_index = 0
+2/name = "star cluster3.png 2"
+2/texture = ExtResource( 4 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 0, 128, 128 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shapes = [  ]
+2/z_index = 0
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 4.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 25.9529
+height = 26.1778
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Space" type="TileMap" parent="Background"]
+tile_set = ExtResource( 1 )
+format = 1
+tile_data = PoolIntArray( 0, 11, 0, 1, 11, 0, 2, 11, 0, 3, 11, 0, 4, 11, 0, 5, 11, 0, 6, 11, 0, 7, 11, 0, 8, 11, 0, 9, 11, 0, 65536, 3, 0, 65537, 3, 0, 65538, 3, 0, 65539, 3, 0, 65540, 3, 0, 65541, 3, 0, 65542, 3, 0, 65543, 3, 0, 65544, 3, 0, 65545, 3, 0, 131072, 3, 0, 131073, 3, 0, 131074, 3, 0, 131075, 3, 0, 131076, 3, 0, 131077, 3, 0, 131078, 3, 0, 131079, 3, 0, 131080, 9, 0, 131081, 3, 0, 196608, 3, 0, 196609, 3, 0, 196610, 3, 0, 196611, 3, 0, 196612, 6, 0, 196613, 9, 0, 196614, 10, 0, 196615, 3, 0, 196616, 3, 0, 196617, 3, 0, 262144, 3, 0, 262145, 3, 0, 262146, 3, 0, 262147, 3, 0, 262148, 3, 0, 262149, 3, 0, 262150, 3, 0, 262151, 3, 0, 262152, 3, 0, 262153, 3, 0, 327680, 4, 0, 327681, 4, 0, 327682, 4, 0, 327683, 4, 0, 327684, 4, 0, 327685, 4, 0, 327686, 4, 0, 327687, 4, 0, 327688, 4, 0, 327689, 4, 0 )
+
+[node name="Stars" type="TileMap" parent="Background"]
+tile_set = SubResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( -65510, 2, 0, 0, 2, 0, 14, 2, 0, 131107, 1, 0, 196612, 2, 0, 196619, 1, 0, 196635, 1, 0, 393215, 2, 0, 393223, 1, 0, 524308, 0, 0, 589837, 0, 0, 655397, 2, 0, 720899, 2, 0, 720903, 0, 0, 720905, 2, 0, 720923, 0, 0, 786454, 0, 0, 917516, 0, 0, 917529, 2, 0, 917536, 1, 0, 1048577, 2, 0, 1048586, 2, 0, 1048595, 1, 0, 1048601, 0, 0, 1114116, 1, 0, 1179677, 2, 0, 1376272, 2, 0 )
+
+[node name="SparklingStars" type="AnimatedSprite" parent="Background"]
+position = Vector2( 296.425, 87.252 )
+frames = SubResource( 2 )
+frame = 1
+playing = true
+
+[node name="SparklingStars2" type="AnimatedSprite" parent="Background"]
+position = Vector2( 138.639, 166.685 )
+frames = SubResource( 2 )
+speed_scale = 0.7
+playing = true
+
+[node name="SparklingStars3" type="AnimatedSprite" parent="Background"]
+position = Vector2( 480.688, 99.14 )
+frames = SubResource( 2 )
+frame = 1
+speed_scale = 0.8
+playing = true
+
+[node name="Planet" type="Sprite" parent="Background"]
+position = Vector2( 364.646, 99.9028 )
+texture = ExtResource( 7 )
+
+[node name="WIP" type="Label" parent="."]
+margin_left = 450.0
+margin_top = 319.623
+margin_right = 640.0
+margin_bottom = 359.623
+custom_fonts/font = ExtResource( 8 )
+text = "work in progress"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="Player" type="Area2D" parent="."]
+position = Vector2( 140.733, 288.681 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Player"]
+texture = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2( 5.36598, 3.05176e-005 )
+rotation = 1.5708
+shape = SubResource( 4 )
