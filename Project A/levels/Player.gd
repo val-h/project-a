@@ -6,7 +6,7 @@ var sprite_size
 
 func _ready():
 	screen_size = get_viewport_rect().size
-	sprite_size = $Sprite
+	sprite_size = $Sprite.get_rect().size
 	
 func _process(delta):
 	var velocity = Vector2()
@@ -23,8 +23,8 @@ func _process(delta):
 		velocity = velocity.normalized() * speed
 		
 	position += velocity * delta
-	position.x = clamp(position.x, 0, screen_size.x)
-	position.y = clamp(position.y, 0, screen_size.y)
+	position.x = clamp(position.x, 0 + sprite_size.x / 2, screen_size.x - sprite_size.x / 2)
+	position.y = clamp(position.y, 0 + sprite_size.y / 2, screen_size.y - sprite_size.y / 2)
 	
 	
 	

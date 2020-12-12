@@ -73,12 +73,12 @@ tile_data = PoolIntArray( -65510, 2, 0, 0, 2, 0, 14, 2, 0, 131107, 1, 0, 196612,
 [node name="SparklingStars" type="AnimatedSprite" parent="Background"]
 position = Vector2( 296.425, 87.252 )
 frames = SubResource( 2 )
-frame = 1
 playing = true
 
 [node name="SparklingStars2" type="AnimatedSprite" parent="Background"]
 position = Vector2( 138.639, 166.685 )
 frames = SubResource( 2 )
+frame = 1
 speed_scale = 0.7
 playing = true
 
@@ -105,7 +105,7 @@ valign = 1
 uppercase = true
 
 [node name="Player" type="Area2D" parent="."]
-position = Vector2( 140.733, 288.681 )
+position = Vector2( 135.174, 269.223 )
 script = ExtResource( 9 )
 __meta__ = {
 "_edit_group_": true
