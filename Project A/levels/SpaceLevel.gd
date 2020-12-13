@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 export (PackedScene) var Mob
 var score
@@ -25,7 +25,7 @@ func _on_MobTimer_timeout():
 	$MobSpawner/MobLocation.offset = randi()
 	
 	# Create a mob instance and add it as a child
-	var mob = Mob.instance()
+	var mob = Mob.instace()
 	add_child(mob)
 	
 	# Set the mob's location perpendicular to the path

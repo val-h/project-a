@@ -1,51 +1,18 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://space_tileset.tres" type="TileSet" id=1]
-[ext_resource path="res://art/textures/star_clusters/star cluster1.png" type="Texture" id=2]
-[ext_resource path="res://art/textures/star_clusters/star cluster5.png" type="Texture" id=3]
-[ext_resource path="res://art/textures/star_clusters/star cluster3.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/Node.gd" type="Script" id=1]
+[ext_resource path="res://charecters/Mob.tscn" type="PackedScene" id=2]
+[ext_resource path="res://space_tileset.tres" type="TileSet" id=3]
+[ext_resource path="res://stars_tileset.tres" type="TileSet" id=4]
 [ext_resource path="res://art/textures/space/space texture3.png" type="Texture" id=5]
 [ext_resource path="res://art/textures/space/space texture4.png" type="Texture" id=6]
 [ext_resource path="res://art/planet.png" type="Texture" id=7]
-[ext_resource path="res://fonts/karma_font.tres" type="DynamicFont" id=8]
-[ext_resource path="res://Scripts/Node.gd" type="Script" id=9]
-[ext_resource path="res://charecters/Mob.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Scripts/Player.gd" type="Script" id=11]
-[ext_resource path="res://art/charecters/toaster.png" type="Texture" id=12]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=8]
+[ext_resource path="res://art/charecters/toaster.png" type="Texture" id=9]
+[ext_resource path="res://fonts/karma_font.tres" type="DynamicFont" id=10]
+[ext_resource path="res://WIP.tscn" type="PackedScene" id=11]
 
-[sub_resource type="TileSet" id=1]
-0/name = "star cluster1.png 0"
-0/texture = ExtResource( 2 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 0, 128, 128 )
-0/tile_mode = 0
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shapes = [  ]
-0/z_index = 0
-1/name = "star cluster5.png 1"
-1/texture = ExtResource( 3 )
-1/tex_offset = Vector2( 0, 0 )
-1/modulate = Color( 1, 1, 1, 1 )
-1/region = Rect2( 0, 0, 128, 128 )
-1/tile_mode = 0
-1/occluder_offset = Vector2( 0, 0 )
-1/navigation_offset = Vector2( 0, 0 )
-1/shapes = [  ]
-1/z_index = 0
-2/name = "star cluster3.png 2"
-2/texture = ExtResource( 4 )
-2/tex_offset = Vector2( 0, 0 )
-2/modulate = Color( 1, 1, 1, 1 )
-2/region = Rect2( 0, 0, 128, 128 )
-2/tile_mode = 0
-2/occluder_offset = Vector2( 0, 0 )
-2/navigation_offset = Vector2( 0, 0 )
-2/shapes = [  ]
-2/z_index = 0
-
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": true,
@@ -57,40 +24,44 @@ animations = [ {
 radius = 26.4096
 height = 24.9635
 
-[sub_resource type="Curve2D" id=5]
+[sub_resource type="Curve2D" id=1]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 0.266373, 0.091217, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 640, 0 )
 }
 
-[node name="Node2D" type="Node2D"]
+[node name="Main" type="Node"]
+script = ExtResource( 1 )
+Mob = ExtResource( 2 )
 
 [node name="Background" type="Node2D" parent="."]
 
 [node name="Space" type="TileMap" parent="Background"]
-tile_set = ExtResource( 1 )
+tile_set = ExtResource( 3 )
 format = 1
 tile_data = PoolIntArray( 0, 11, 0, 1, 11, 0, 2, 11, 0, 3, 11, 0, 4, 11, 0, 5, 11, 0, 6, 11, 0, 7, 11, 0, 8, 11, 0, 9, 11, 0, 65536, 3, 0, 65537, 3, 0, 65538, 3, 0, 65539, 3, 0, 65540, 3, 0, 65541, 3, 0, 65542, 3, 0, 65543, 3, 0, 65544, 3, 0, 65545, 3, 0, 131072, 3, 0, 131073, 3, 0, 131074, 3, 0, 131075, 3, 0, 131076, 3, 0, 131077, 3, 0, 131078, 3, 0, 131079, 3, 0, 131080, 9, 0, 131081, 3, 0, 196608, 3, 0, 196609, 3, 0, 196610, 3, 0, 196611, 3, 0, 196612, 6, 0, 196613, 9, 0, 196614, 10, 0, 196615, 3, 0, 196616, 3, 0, 196617, 3, 0, 262144, 3, 0, 262145, 3, 0, 262146, 3, 0, 262147, 3, 0, 262148, 3, 0, 262149, 3, 0, 262150, 3, 0, 262151, 3, 0, 262152, 3, 0, 262153, 3, 0, 327680, 4, 0, 327681, 4, 0, 327682, 4, 0, 327683, 4, 0, 327684, 4, 0, 327685, 4, 0, 327686, 4, 0, 327687, 4, 0, 327688, 4, 0, 327689, 4, 0 )
 
 [node name="Stars" type="TileMap" parent="Background"]
-tile_set = SubResource( 1 )
+tile_set = ExtResource( 4 )
 cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( -65531, 1, 0, -65510, 2, 0, 0, 2, 0, 1, 2, 0, 14, 2, 0, 65568, 2, 0, 131082, 2, 0, 131093, 2, 0, 131107, 1, 0, 262142, 2, 0, 196612, 2, 0, 196619, 1, 0, 196635, 1, 0, 393215, 2, 0, 327704, 1, 0, 393223, 1, 0, 393235, 2, 0, 458784, 2, 0, 458787, 2, 0, 589823, 1, 0, 524308, 0, 0, 524323, 2, 0, 589837, 0, 0, 655397, 2, 0, 720899, 2, 0, 720903, 0, 0, 720905, 2, 0, 720923, 0, 0, 720927, 1, 0, 786454, 0, 0, 851985, 2, 0, 917505, 2, 0, 917516, 0, 0, 917529, 2, 0, 917536, 1, 0, 983061, 2, 0, 1048577, 2, 0, 1048586, 2, 0, 1048595, 1, 0, 1048601, 0, 0, 1114116, 1, 0, 1114125, 2, 0, 1179677, 2, 0, 1310717, 1, 0, 1376272, 2, 0, 1441802, 1, 0, 1441811, 1, 0 )
 
 [node name="SparklingStars" type="AnimatedSprite" parent="Background"]
 position = Vector2( 296.425, 87.252 )
-frames = SubResource( 2 )
+frames = SubResource( 3 )
+frame = 1
 playing = true
 
 [node name="SparklingStars2" type="AnimatedSprite" parent="Background"]
 position = Vector2( 138.639, 166.685 )
-frames = SubResource( 2 )
+frames = SubResource( 3 )
+frame = 1
 speed_scale = 0.7
 playing = true
 
 [node name="SparklingStars3" type="AnimatedSprite" parent="Background"]
 position = Vector2( 480.688, 99.14 )
-frames = SubResource( 2 )
+frames = SubResource( 3 )
 speed_scale = 0.8
 playing = true
 
@@ -98,63 +69,50 @@ playing = true
 position = Vector2( 440.297, 116.114 )
 texture = ExtResource( 7 )
 
-[node name="WIP" type="Label" parent="."]
-margin_left = 450.0
-margin_top = 319.623
-margin_right = 640.0
-margin_bottom = 359.623
-custom_fonts/font = ExtResource( 8 )
-text = "work in progress"
-align = 1
-valign = 1
-uppercase = true
+[node name="Node2D" type="Node2D" parent="."]
 
-[node name="Main" type="Node" parent="."]
-script = ExtResource( 9 )
-MobScene = ExtResource( 10 )
-
-[node name="MobTimer" type="Timer" parent="Main"]
-wait_time = 0.5
-autostart = true
-
-[node name="StartPosition" type="Position2D" parent="Main"]
+[node name="Player" type="Area2D" parent="Node2D"]
 position = Vector2( 240, 240 )
-
-[node name="Player" type="Area2D" parent="Main"]
-position = Vector2( 240, 240 )
-script = ExtResource( 11 )
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="Main/Player"]
-texture = ExtResource( 12 )
+[node name="Sprite" type="Sprite" parent="Node2D/Player"]
+texture = ExtResource( 9 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Main/Player"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Player"]
 position = Vector2( 7, 0 )
 rotation = 1.5708
 shape = SubResource( 4 )
 
-[node name="GameOver" type="Label" parent="Main/Player"]
+[node name="GameOver" type="Label" parent="Node2D"]
 visible = false
-margin_left = -49.3855
-margin_top = -18.4596
-margin_right = 62.6145
-margin_bottom = 20.5404
-custom_fonts/font = ExtResource( 8 )
+margin_left = 190.615
+margin_top = 221.54
+margin_right = 302.615
+margin_bottom = 260.54
+custom_fonts/font = ExtResource( 10 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "you died"
 align = 1
 valign = 1
 uppercase = true
 
-[node name="MobSpawner" type="Path2D" parent="Main"]
-curve = SubResource( 5 )
+[node name="WIP" parent="." instance=ExtResource( 11 )]
 
-[node name="MobLocation" type="PathFollow2D" parent="Main/MobSpawner"]
+[node name="MobTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="StartPosition" type="Position2D" parent="."]
+position = Vector2( 240, 240 )
+
+[node name="MobSpawner" type="Path2D" parent="."]
+curve = SubResource( 1 )
+
+[node name="MobLocation" type="PathFollow2D" parent="MobSpawner"]
 position = Vector2( 0.266373, 0.091217 )
 rotation = -0.0196619
-
-[node name="Mob" parent="Main" instance=ExtResource( 10 )]
-[connection signal="timeout" from="Main/MobTimer" to="Main" method="_on_MobTimer_timeout"]
-[connection signal="hit" from="Main/Player" to="Main" method="_game_over"]
+[connection signal="hit" from="Node2D/Player" to="." method="_game_over"]
+[connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]

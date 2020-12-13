@@ -1,4 +1,4 @@
-extends Area2D
+extends RigidBody2D
 
 signal hit
 
@@ -9,7 +9,7 @@ var sprite_size
 func _ready():
 	screen_size = get_viewport_rect().size
 	sprite_size = $Sprite.get_rect().size
-	#hide()
+	hide()
 	
 func _process(delta):
 	# Create the vector var and control the direction of the movements
@@ -36,11 +36,11 @@ func _process(delta):
 	if velocity.x != 0:
 		$Sprite.flip_h = velocity.x < 0
 	
-#func change_sprite_orientation():
-#	if $Sprite.flip_h == false:
-#		$Sprite.flip_h = true
-#	else:
-#		$Sprite.flip_h = false		
+func change_sprite_orientation():
+	if $Sprite.flip_h == false:
+		$Sprite.flip_h = true
+	else:
+		$Sprite.flip_h = false		
 
 func _on_Player_body_entered(body):
 	hide()

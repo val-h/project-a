@@ -1,0 +1,92 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://levels/SpaceLevel.gd" type="Script" id=1]
+[ext_resource path="res://charecters/Mob.tscn" type="PackedScene" id=2]
+[ext_resource path="res://space_tileset.tres" type="TileSet" id=3]
+[ext_resource path="res://stars_tileset.tres" type="TileSet" id=4]
+[ext_resource path="res://levels/Player.gd" type="Script" id=5]
+[ext_resource path="res://art/charecters/toaster.png" type="Texture" id=6]
+[ext_resource path="res://WIP.tscn" type="PackedScene" id=7]
+[ext_resource path="res://levels/Planet.gd" type="Script" id=8]
+[ext_resource path="res://art/planet.png" type="Texture" id=9]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 26.2115
+height = 22.7919
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 640, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 10, 0 )
+}
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 11.0985
+
+[node name="SpaceLevel" type="Node2D"]
+script = ExtResource( 1 )
+Mob = ExtResource( 2 )
+
+[node name="Layer0" type="TileMap" parent="."]
+tile_set = ExtResource( 3 )
+format = 1
+tile_data = PoolIntArray( 0, 11, 0, 1, 11, 0, 2, 11, 0, 3, 11, 0, 4, 11, 0, 5, 11, 0, 6, 11, 0, 7, 11, 0, 8, 11, 0, 9, 11, 0, 65536, 3, 0, 65537, 3, 0, 65538, 3, 0, 65539, 3, 0, 65540, 3, 0, 65541, 3, 0, 65542, 3, 0, 65543, 3, 0, 65544, 3, 0, 65545, 3, 0, 131072, 3, 0, 131073, 6, 0, 131074, 9, 0, 131075, 3, 0, 131076, 3, 0, 131077, 3, 0, 131078, 3, 0, 131079, 3, 0, 131080, 3, 0, 131081, 3, 0, 196608, 3, 0, 196609, 3, 0, 196610, 10, 0, 196611, 3, 0, 196612, 3, 0, 196613, 3, 0, 196614, 9, 0, 196615, 10, 0, 196616, 3, 0, 196617, 3, 0, 262144, 3, 0, 262145, 3, 0, 262146, 3, 0, 262147, 3, 0, 262148, 3, 0, 262149, 3, 0, 262150, 10, 0, 262151, 6, 0, 262152, 10, 0, 262153, 3, 0, 327680, 4, 0, 327681, 4, 0, 327682, 4, 0, 327683, 4, 0, 327684, 4, 0, 327685, 4, 0, 327686, 4, 0, 327687, 7, 0, 327688, 4, 0, 327689, 4, 0 )
+
+[node name="Layer1" type="TileMap" parent="."]
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 0, 2, 0, 65546, 2, 0, 65551, 3, 0, 196636, 2, 0, 196644, 2, 0, 262166, 2, 0, 327684, 1, 0, 327713, 3, 0, 458767, 2, 0, 524317, 2, 0, 524323, 2, 0, 589825, 2, 0, 655370, 2, 0, 655377, 1, 0, 983054, 2, 0, 983061, 2, 0, 983074, 2, 0, 983075, 2, 0, 1114112, 3, 0, 1114116, 2, 0, 1114135, 1, 0, 1179657, 2, 0 )
+
+[node name="Player" type="RigidBody2D" parent="."]
+position = Vector2( 240, 240 )
+gravity_scale = 4.0
+custom_integrator = true
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Player"]
+texture = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2( 7, 0 )
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="WIP" parent="." instance=ExtResource( 7 )]
+
+[node name="MobSpawner" type="Path2D" parent="."]
+curve = SubResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MobLocation" type="PathFollow2D" parent="MobSpawner"]
+position = Vector2( -0.460396, -0.0605354 )
+rotation = 0.00217548
+
+[node name="StartPosition" type="Position2D" parent="."]
+position = Vector2( 240, 240 )
+
+[node name="MobTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="Planet" type="RigidBody2D" parent="."]
+position = Vector2( -33.1972, 68.8608 )
+custom_integrator = true
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Planet"]
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planet"]
+shape = SubResource( 3 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="Planet"]
+[connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
