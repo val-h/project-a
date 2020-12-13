@@ -1,18 +1,20 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scripts/Node.gd" type="Script" id=1]
-[ext_resource path="res://charecters/Mob.tscn" type="PackedScene" id=2]
+[ext_resource path="res://charecters/PlanetMob.tscn" type="PackedScene" id=2]
 [ext_resource path="res://space_tileset.tres" type="TileSet" id=3]
 [ext_resource path="res://stars_tileset.tres" type="TileSet" id=4]
 [ext_resource path="res://art/textures/space/space texture3.png" type="Texture" id=5]
 [ext_resource path="res://art/textures/space/space texture4.png" type="Texture" id=6]
 [ext_resource path="res://art/planet.png" type="Texture" id=7]
-[ext_resource path="res://Scripts/Player.gd" type="Script" id=8]
-[ext_resource path="res://art/charecters/toaster.png" type="Texture" id=9]
-[ext_resource path="res://fonts/karma_font.tres" type="DynamicFont" id=10]
-[ext_resource path="res://WIP.tscn" type="PackedScene" id=11]
+[ext_resource path="res://WIP.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=9]
+[ext_resource path="res://art/charecters/toaster.png" type="Texture" id=10]
+[ext_resource path="res://fonts/karma_font.tres" type="DynamicFont" id=11]
+[ext_resource path="res://sounds/background_music.ogg" type="AudioStream" id=12]
+[ext_resource path="res://sounds/oof_sound.wav" type="AudioStream" id=13]
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": true,
@@ -20,14 +22,14 @@ animations = [ {
 "speed": 4.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=4]
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0.266373, 0.091217, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 960, 0 )
+}
+
+[sub_resource type="CapsuleShape2D" id=3]
 radius = 26.4096
 height = 24.9635
-
-[sub_resource type="Curve2D" id=1]
-_data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 0.266373, 0.091217, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 640, 0 )
-}
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
@@ -38,81 +40,98 @@ Mob = ExtResource( 2 )
 [node name="Space" type="TileMap" parent="Background"]
 tile_set = ExtResource( 3 )
 format = 1
-tile_data = PoolIntArray( 0, 11, 0, 1, 11, 0, 2, 11, 0, 3, 11, 0, 4, 11, 0, 5, 11, 0, 6, 11, 0, 7, 11, 0, 8, 11, 0, 9, 11, 0, 65536, 3, 0, 65537, 3, 0, 65538, 3, 0, 65539, 3, 0, 65540, 3, 0, 65541, 3, 0, 65542, 3, 0, 65543, 3, 0, 65544, 3, 0, 65545, 3, 0, 131072, 3, 0, 131073, 3, 0, 131074, 3, 0, 131075, 3, 0, 131076, 3, 0, 131077, 3, 0, 131078, 3, 0, 131079, 3, 0, 131080, 9, 0, 131081, 3, 0, 196608, 3, 0, 196609, 3, 0, 196610, 3, 0, 196611, 3, 0, 196612, 6, 0, 196613, 9, 0, 196614, 10, 0, 196615, 3, 0, 196616, 3, 0, 196617, 3, 0, 262144, 3, 0, 262145, 3, 0, 262146, 3, 0, 262147, 3, 0, 262148, 3, 0, 262149, 3, 0, 262150, 3, 0, 262151, 3, 0, 262152, 3, 0, 262153, 3, 0, 327680, 4, 0, 327681, 4, 0, 327682, 4, 0, 327683, 4, 0, 327684, 4, 0, 327685, 4, 0, 327686, 4, 0, 327687, 4, 0, 327688, 4, 0, 327689, 4, 0 )
+tile_data = PoolIntArray( 0, 11, 0, 1, 11, 0, 2, 11, 0, 3, 11, 0, 4, 11, 0, 5, 11, 0, 6, 11, 0, 7, 11, 0, 8, 11, 0, 9, 11, 0, 10, 11, 0, 11, 11, 0, 12, 11, 0, 13, 11, 0, 14, 11, 0, 65536, 3, 0, 65537, 3, 0, 65538, 3, 0, 65539, 3, 0, 65540, 3, 0, 65541, 3, 0, 65542, 3, 0, 65543, 3, 0, 65544, 3, 0, 65545, 3, 0, 65546, 3, 0, 65547, 3, 0, 65548, 3, 0, 65549, 3, 0, 65550, 3, 0, 131072, 3, 0, 131073, 3, 0, 131074, 3, 0, 131075, 3, 0, 131076, 3, 0, 131077, 3, 0, 131078, 3, 0, 131079, 3, 0, 131080, 9, 0, 131081, 3, 0, 131082, 3, 0, 131083, 3, 0, 131084, 3, 0, 131085, 3, 0, 131086, 3, 0, 196608, 3, 0, 196609, 3, 0, 196610, 3, 0, 196611, 3, 0, 196612, 6, 0, 196613, 9, 0, 196614, 10, 0, 196615, 3, 0, 196616, 3, 0, 196617, 3, 0, 196618, 3, 0, 196619, 6, 0, 196620, 9, 0, 196621, 3, 0, 196622, 3, 0, 262144, 3, 0, 262145, 3, 0, 262146, 3, 0, 262147, 3, 0, 262148, 3, 0, 262149, 3, 0, 262150, 3, 0, 262151, 3, 0, 262152, 3, 0, 262153, 3, 0, 262154, 3, 0, 262155, 3, 0, 262156, 10, 0, 262157, 3, 0, 262158, 3, 0, 327680, 3, 0, 327681, 3, 0, 327682, 3, 0, 327683, 3, 0, 327684, 3, 0, 327685, 3, 0, 327686, 3, 0, 327687, 3, 0, 327688, 3, 0, 327689, 3, 0, 327690, 3, 0, 327691, 6, 0, 327692, 3, 0, 327693, 3, 0, 327694, 3, 0, 393216, 3, 0, 393217, 3, 0, 393218, 3, 0, 393219, 3, 0, 393220, 3, 0, 393221, 3, 0, 393222, 3, 0, 393223, 3, 0, 393224, 10, 0, 393225, 3, 0, 393226, 3, 0, 393227, 3, 0, 393228, 3, 0, 393229, 3, 0, 393230, 3, 0, 458752, 3, 0, 458753, 3, 0, 458754, 3, 0, 458755, 3, 0, 458756, 3, 0, 458757, 3, 0, 458758, 3, 0, 458759, 3, 0, 458760, 3, 0, 458761, 6, 0, 458762, 9, 0, 458763, 3, 0, 458764, 3, 0, 458765, 3, 0, 458766, 3, 0, 524288, 4, 0, 524289, 4, 0, 524290, 4, 0, 524291, 4, 0, 524292, 4, 0, 524293, 4, 0, 524294, 4, 0, 524295, 4, 0, 524296, 4, 0, 524297, 4, 0, 524298, 4, 0, 524299, 4, 0, 524300, 4, 0, 524301, 4, 0, 524302, 4, 0 )
 
 [node name="Stars" type="TileMap" parent="Background"]
 tile_set = ExtResource( 4 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( -65531, 1, 0, -65510, 2, 0, 0, 2, 0, 1, 2, 0, 14, 2, 0, 65568, 2, 0, 131082, 2, 0, 131093, 2, 0, 131107, 1, 0, 262142, 2, 0, 196612, 2, 0, 196619, 1, 0, 196635, 1, 0, 393215, 2, 0, 327704, 1, 0, 393223, 1, 0, 393235, 2, 0, 458784, 2, 0, 458787, 2, 0, 589823, 1, 0, 524308, 0, 0, 524323, 2, 0, 589837, 0, 0, 655397, 2, 0, 720899, 2, 0, 720903, 0, 0, 720905, 2, 0, 720923, 0, 0, 720927, 1, 0, 786454, 0, 0, 851985, 2, 0, 917505, 2, 0, 917516, 0, 0, 917529, 2, 0, 917536, 1, 0, 983061, 2, 0, 1048577, 2, 0, 1048586, 2, 0, 1048595, 1, 0, 1048601, 0, 0, 1114116, 1, 0, 1114125, 2, 0, 1179677, 2, 0, 1310717, 1, 0, 1376272, 2, 0, 1441802, 1, 0, 1441811, 1, 0 )
+tile_data = PoolIntArray( -65531, 1, 0, -65510, 2, 0, 0, 2, 0, 1, 2, 0, 14, 2, 0, 52, 1, 0, 65568, 2, 0, 65577, 2, 0, 65588, 1, 0, 131082, 2, 0, 131093, 2, 0, 131107, 1, 0, 131117, 2, 0, 131118, 2, 0, 262142, 2, 0, 196612, 2, 0, 196619, 1, 0, 196635, 1, 0, 262196, 2, 0, 393215, 2, 0, 327704, 1, 0, 393223, 1, 0, 393235, 2, 0, 458784, 2, 0, 458787, 2, 0, 589823, 1, 0, 524308, 0, 0, 524323, 2, 0, 524330, 1, 0, 524333, 2, 0, 524335, 2, 0, 589837, 0, 0, 655397, 2, 0, 655398, 2, 0, 655417, 2, 0, 720899, 2, 0, 720903, 0, 0, 720905, 2, 0, 720923, 0, 0, 720927, 1, 0, 786454, 0, 0, 851985, 2, 0, 852021, 1, 0, 917505, 2, 0, 917516, 0, 0, 917529, 2, 0, 917536, 1, 0, 917545, 2, 0, 917557, 1, 0, 983061, 2, 0, 1048577, 2, 0, 1048586, 2, 0, 1048595, 1, 0, 1048601, 0, 0, 1048615, 2, 0, 1048626, 2, 0, 1114116, 1, 0, 1114125, 2, 0, 1114162, 2, 0, 1179677, 2, 0, 1310717, 1, 0, 1376272, 2, 0, 1376281, 2, 0, 1376282, 2, 0, 1376293, 1, 0, 1441795, 3, 0, 1441796, 2, 0, 1441802, 1, 0, 1441811, 1, 0, 1441838, 2, 0, 1441840, 3, 0, 1507352, 2, 0, 1507358, 2, 0, 1572886, 1, 0, 1572899, 2, 0, 1572917, 2, 0, 1703936, 2, 0, 1703962, 0, 0, 1703976, 2, 0, 1703977, 2, 0, 1769472, 2, 0, 1769490, 2, 0, 1769495, 0, 0, 1769503, 2, 0, 1769518, 2, 0, 1835012, 2, 0, 1835017, 1, 0, 1835021, 2, 0, 1835026, 2, 0, 1835049, 3, 0, 1966082, 3, 0, 1966099, 1, 0, 1966109, 1, 0, 1966111, 2, 0, 1966127, 1, 0, 1966134, 2, 0, 2031617, 2, 0, 2031618, 3, 0, 2031640, 0, 0, 2031670, 2, 0, 2097181, 2, 0, 2097191, 2, 0, 2162717, 2, 0, 2162729, 3, 0, 2228235, 3, 0 )
 
 [node name="SparklingStars" type="AnimatedSprite" parent="Background"]
 position = Vector2( 296.425, 87.252 )
-frames = SubResource( 3 )
-frame = 1
+frames = SubResource( 1 )
 playing = true
 
 [node name="SparklingStars2" type="AnimatedSprite" parent="Background"]
 position = Vector2( 138.639, 166.685 )
-frames = SubResource( 3 )
-frame = 1
+frames = SubResource( 1 )
 speed_scale = 0.7
 playing = true
 
 [node name="SparklingStars3" type="AnimatedSprite" parent="Background"]
 position = Vector2( 480.688, 99.14 )
-frames = SubResource( 3 )
+frames = SubResource( 1 )
 speed_scale = 0.8
 playing = true
 
 [node name="Planet" type="Sprite" parent="Background"]
-position = Vector2( 440.297, 116.114 )
+position = Vector2( 1039.33, 74.605 )
 texture = ExtResource( 7 )
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="WIP" parent="." instance=ExtResource( 8 )]
+margin_left = 760.0
+margin_top = 510.0
+margin_right = 950.0
+margin_bottom = 550.0
 
-[node name="Player" type="Area2D" parent="Node2D"]
-position = Vector2( 240, 240 )
-script = ExtResource( 8 )
+[node name="MobTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="StartPosition" type="Position2D" parent="."]
+position = Vector2( 480, 360 )
+
+[node name="MobSpawner" type="Path2D" parent="."]
+curve = SubResource( 2 )
+
+[node name="MobLocation" type="PathFollow2D" parent="MobSpawner"]
+position = Vector2( 0.266373, 0.091217 )
+rotation = -0.0196751
+
+[node name="Player" type="Area2D" parent="."]
+position = Vector2( 480, 360 )
+script = ExtResource( 9 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="Node2D/Player"]
-texture = ExtResource( 9 )
+[node name="Sprite" type="Sprite" parent="Player"]
+texture = ExtResource( 10 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Player"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2( 7, 0 )
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 
-[node name="GameOver" type="Label" parent="Node2D"]
-visible = false
-margin_left = 190.615
-margin_top = 221.54
-margin_right = 302.615
-margin_bottom = 260.54
-custom_fonts/font = ExtResource( 10 )
+[node name="GameOver" type="Label" parent="."]
+margin_left = 980.6
+margin_top = 168.614
+margin_right = 1092.6
+margin_bottom = 207.614
+custom_fonts/font = ExtResource( 11 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "you died"
 align = 1
 valign = 1
 uppercase = true
 
-[node name="WIP" parent="." instance=ExtResource( 11 )]
+[node name="Start" type="Label" parent="."]
+margin_left = 370.0
+margin_top = 40.0
+margin_right = 591.0
+margin_bottom = 79.0
+custom_fonts/font = ExtResource( 11 )
+custom_colors/font_color = Color( 0.552941, 0.266667, 0.266667, 1 )
+text = "Press space to start"
+align = 1
+valign = 1
+uppercase = true
 
-[node name="MobTimer" type="Timer" parent="."]
-wait_time = 0.5
-autostart = true
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
 
-[node name="StartPosition" type="Position2D" parent="."]
-position = Vector2( 240, 240 )
-
-[node name="MobSpawner" type="Path2D" parent="."]
-curve = SubResource( 1 )
-
-[node name="MobLocation" type="PathFollow2D" parent="MobSpawner"]
-position = Vector2( 0.266373, 0.091217 )
-rotation = -0.0196619
-[connection signal="hit" from="Node2D/Player" to="." method="_game_over"]
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
+[connection signal="body_entered" from="Player" to="Player" method="_on_Player_body_entered"]
+[connection signal="hit" from="Player" to="." method="_game_over"]

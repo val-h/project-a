@@ -1,24 +1,61 @@
 extends Node
 
 export (PackedScene) var Mob
-var score
+var score	# Not yet implemented as a UI element
+var playing = false
+
+# References
+onready var mob_timer = $MobTimer
+onready var over_label = $GameOver
+onready var start_label = $Start
+onready var music = $BackgroundMusic
+onready var death_sound = $DeathSound
+
 
 func _ready():
 	randomize()
+	over_label.hide()
 	
+func _process(delta):
 	# Start the game
-	if Input.is_action_pressed("ui_select"):
+	if Input.is_action_pressed("start_game") && playing != true:
 		new_game()
+	if Input.is_action_just_pressed("quit_game"):
+		get_tree().quit()
 	
 # New game
 func new_game():
 	score = 0
-	$Player.start()
-	$Player/GameOver.visible = false
+	$Player.start($StartPosition.position)
+	mob_timer.start()
+	
+	# Music
+	music.play()
+	death_sound.stop()
+	
+	# Labels
+	over_label.hide()
+	start_label.hide()
+	
+	playing	= true
 
 func _game_over():
-	$MobTimer.stop()
-	$Player/GameOver.visible = true
+	mob_timer.stop()
+	
+	# Music
+	music.stop()
+	death_sound.play()
+	
+	# GameOver label position
+	over_label.rect_position = $Player.position
+	over_label.rect_position.x -= 50
+	over_label.rect_position.y -= 25
+	
+	# Labels
+	over_label.show()
+	start_label.show()
+	
+	playing = false
 
 func _on_MobTimer_timeout():
 	# Chosing a random location on the path

@@ -13,7 +13,7 @@ func _ready():
 # New game
 func new_game():
 	score = 0
-	$Player.start()
+	$Player.start($StartPosition.position)
 	$Player/GameOver.visible = false
 
 func _game_over():
@@ -25,7 +25,7 @@ func _on_MobTimer_timeout():
 	$MobSpawner/MobLocation.offset = randi()
 	
 	# Create a mob instance and add it as a child
-	var mob = Mob.instace()
+	var mob = Mob.instance()
 	add_child(mob)
 	
 	# Set the mob's location perpendicular to the path

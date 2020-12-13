@@ -9,7 +9,7 @@ var sprite_size
 func _ready():
 	screen_size = get_viewport_rect().size
 	sprite_size = $Sprite.get_rect().size
-	hide()
+	#hide()
 	
 func _process(delta):
 	# Create the vector var and control the direction of the movements
