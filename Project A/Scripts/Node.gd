@@ -1,5 +1,7 @@
 extends Node
 
+signal playing
+
 export (PackedScene) var Mob
 var score	# Not yet implemented as a UI element
 var playing = false
@@ -10,16 +12,19 @@ onready var over_label = $GameOver
 onready var start_label = $Start
 onready var music = $BackgroundMusic
 onready var death_sound = $DeathSound
+onready var pause_label = $Pause
 
 
 func _ready():
 	randomize()
 	over_label.hide()
+	pause_label.hide()
 	
 func _process(delta):
 	# Start the game
 	if Input.is_action_pressed("start_game") && playing != true:
 		new_game()
+	# Quit the game
 	if Input.is_action_just_pressed("quit_game"):
 		get_tree().quit()
 	
@@ -38,6 +43,7 @@ func new_game():
 	start_label.hide()
 	
 	playing	= true
+	emit_signal("playing")
 
 func _game_over():
 	mob_timer.stop()
