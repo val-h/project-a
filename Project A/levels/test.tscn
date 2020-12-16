@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scripts/Node.gd" type="Script" id=1]
 [ext_resource path="res://charecters/PlanetMob.tscn" type="PackedScene" id=2]
@@ -8,12 +8,12 @@
 [ext_resource path="res://stars_tileset.tres" type="TileSet" id=6]
 [ext_resource path="res://art/planet.png" type="Texture" id=7]
 [ext_resource path="res://WIP.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scripts/Player.gd" type="Script" id=9]
-[ext_resource path="res://art/charecters/toaster.png" type="Texture" id=10]
-[ext_resource path="res://fonts/karma_font.tres" type="DynamicFont" id=11]
-[ext_resource path="res://pause.gd" type="Script" id=12]
-[ext_resource path="res://sounds/background_music.ogg" type="AudioStream" id=13]
-[ext_resource path="res://sounds/oof_sound.wav" type="AudioStream" id=14]
+[ext_resource path="res://fonts/karma_font.tres" type="DynamicFont" id=9]
+[ext_resource path="res://pause.gd" type="Script" id=10]
+[ext_resource path="res://sounds/background_music.ogg" type="AudioStream" id=11]
+[ext_resource path="res://sounds/oof_sound.wav" type="AudioStream" id=12]
+[ext_resource path="res://levels/GroundBlock.tscn" type="PackedScene" id=13]
+[ext_resource path="res://charecters/Player.tscn" type="PackedScene" id=14]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -28,15 +28,12 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 0.266373, 0.091217, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 960, 0 )
 }
 
-[sub_resource type="CapsuleShape2D" id=3]
-radius = 26.4096
-height = 24.9635
-
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
 Mob = ExtResource( 2 )
 
 [node name="Background" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Space" type="TileMap" parent="Background"]
 tile_set = ExtResource( 3 )
@@ -46,31 +43,30 @@ tile_data = PoolIntArray( 0, 11, 0, 1, 11, 0, 2, 11, 0, 3, 11, 0, 4, 11, 0, 5, 1
 [node name="SparklingStars" type="AnimatedSprite" parent="Background"]
 position = Vector2( 296.425, 87.252 )
 frames = SubResource( 1 )
+frame = 1
 playing = true
 
 [node name="SparklingStars2" type="AnimatedSprite" parent="Background"]
 position = Vector2( 138.639, 166.685 )
 frames = SubResource( 1 )
-frame = 1
 speed_scale = 0.7
 playing = true
 
 [node name="SparklingStars3" type="AnimatedSprite" parent="Background"]
 position = Vector2( 480.688, 99.14 )
 frames = SubResource( 1 )
-frame = 1
 speed_scale = 0.8
 playing = true
 
 [node name="SparklingStars4" type="AnimatedSprite" parent="Background"]
 position = Vector2( 241.293, 410.694 )
 frames = SubResource( 1 )
+frame = 1
 playing = true
 
 [node name="SparklingStars5" type="AnimatedSprite" parent="Background"]
 position = Vector2( 705.138, 280.582 )
 frames = SubResource( 1 )
-frame = 1
 playing = true
 
 [node name="Stars" type="TileMap" parent="Background"]
@@ -96,33 +92,19 @@ wait_time = 0.5
 position = Vector2( 480, 360 )
 
 [node name="MobSpawner" type="Path2D" parent="."]
+editor/display_folded = true
 curve = SubResource( 2 )
 
 [node name="MobLocation" type="PathFollow2D" parent="MobSpawner"]
 position = Vector2( 0.266373, 0.091217 )
 rotation = -0.0196751
 
-[node name="Player" type="Area2D" parent="."]
-position = Vector2( 480, 360 )
-script = ExtResource( 9 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="Player"]
-texture = ExtResource( 10 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2( 7, 0 )
-rotation = 1.5708
-shape = SubResource( 3 )
-
 [node name="GameOver" type="Label" parent="."]
 margin_left = 980.6
 margin_top = 168.614
 margin_right = 1092.6
 margin_bottom = 207.614
-custom_fonts/font = ExtResource( 11 )
+custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "you died"
 align = 1
@@ -134,7 +116,7 @@ margin_left = 370.0
 margin_top = 34.1192
 margin_right = 591.0
 margin_bottom = 73.1192
-custom_fonts/font = ExtResource( 11 )
+custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 0.552941, 0.266667, 0.266667, 1 )
 text = "Press space to start"
 align = 1
@@ -148,15 +130,17 @@ margin_top = 269.265
 margin_right = 575.0
 margin_bottom = 309.265
 text = "paused"
-script = ExtResource( 12 )
+script = ExtResource( 10 )
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
-stream = ExtResource( 13 )
+stream = ExtResource( 11 )
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 14 )
+stream = ExtResource( 12 )
+
+[node name="StaticBody2D" parent="." instance=ExtResource( 13 )]
+
+[node name="Player" parent="." instance=ExtResource( 14 )]
 [connection signal="playing" from="." to="Pause" method="_on_Main_playing"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
-[connection signal="body_entered" from="Player" to="Player" method="_on_Player_body_entered"]
-[connection signal="hit" from="Player" to="." method="_game_over"]

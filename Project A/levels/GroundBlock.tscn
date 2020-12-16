@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://art/textures/space/space texture1.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 32.4731, 31.2346 )
+
+[node name="StaticBody2D" type="StaticBody2D"]
+position = Vector2( 158.495, 514.405 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 4 )
+
+[node name="ground" type="Sprite" parent="."]
+texture = ExtResource( 1 )
