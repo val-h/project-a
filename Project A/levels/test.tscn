@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scripts/Node.gd" type="Script" id=1]
 [ext_resource path="res://charecters/PlanetMob.tscn" type="PackedScene" id=2]
@@ -9,11 +9,10 @@
 [ext_resource path="res://art/planet.png" type="Texture" id=7]
 [ext_resource path="res://WIP.tscn" type="PackedScene" id=8]
 [ext_resource path="res://fonts/karma_font.tres" type="DynamicFont" id=9]
-[ext_resource path="res://pause.gd" type="Script" id=10]
+[ext_resource path="res://Scripts/pause.gd" type="Script" id=10]
 [ext_resource path="res://sounds/background_music.ogg" type="AudioStream" id=11]
 [ext_resource path="res://sounds/oof_sound.wav" type="AudioStream" id=12]
-[ext_resource path="res://levels/GroundBlock.tscn" type="PackedScene" id=13]
-[ext_resource path="res://charecters/Player.tscn" type="PackedScene" id=14]
+[ext_resource path="res://charecters/Player.tscn" type="PackedScene" id=13]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -55,6 +54,7 @@ playing = true
 [node name="SparklingStars3" type="AnimatedSprite" parent="Background"]
 position = Vector2( 480.688, 99.14 )
 frames = SubResource( 1 )
+frame = 1
 speed_scale = 0.8
 playing = true
 
@@ -139,8 +139,6 @@ stream = ExtResource( 11 )
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
 
-[node name="StaticBody2D" parent="." instance=ExtResource( 13 )]
-
-[node name="Player" parent="." instance=ExtResource( 14 )]
+[node name="Player" parent="." instance=ExtResource( 13 )]
 [connection signal="playing" from="." to="Pause" method="_on_Main_playing"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]

@@ -1,12 +1,13 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://levels/SpaceLevel.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/SpaceLevel.gd" type="Script" id=1]
 [ext_resource path="res://charecters/PlanetMob.tscn" type="PackedScene" id=2]
 [ext_resource path="res://space_tileset.tres" type="TileSet" id=3]
 [ext_resource path="res://stars_tileset.tres" type="TileSet" id=4]
 [ext_resource path="res://levels/Player.gd" type="Script" id=5]
 [ext_resource path="res://art/charecters/toaster.png" type="Texture" id=6]
 [ext_resource path="res://WIP.tscn" type="PackedScene" id=7]
+
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 26.2115
