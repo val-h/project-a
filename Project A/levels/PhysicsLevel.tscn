@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://levels/GroundBlock.tscn" type="PackedScene" id=1]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 81.2617, 508.923 )
+
+[node name="StaticBody2D" parent="StaticBody2D" instance=ExtResource( 1 )]
+position = Vector2( 58.0724, 4.41058 )
+
+[node name="StaticBody2D2" parent="StaticBody2D" instance=ExtResource( 1 )]
+position = Vector2( 118.35, 15.437 )

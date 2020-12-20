@@ -48,13 +48,13 @@ playing = true
 [node name="SparklingStars2" type="AnimatedSprite" parent="Background"]
 position = Vector2( 138.639, 166.685 )
 frames = SubResource( 1 )
-frame = 1
 speed_scale = 0.7
 playing = true
 
 [node name="SparklingStars3" type="AnimatedSprite" parent="Background"]
 position = Vector2( 480.688, 99.14 )
 frames = SubResource( 1 )
+frame = 1
 speed_scale = 0.8
 playing = true
 
@@ -154,3 +154,4 @@ texture = ExtResource( 14 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 [connection signal="playing" from="." to="Pause" method="_on_Main_playing"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
+[connection signal="hit" from="Player" to="." method="game_over"]
