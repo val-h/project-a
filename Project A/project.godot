@@ -8,9 +8,20 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "Humanoid",
+"language": "GDScript",
+"path": "res://Scripts/Humanoid.gd"
+}, {
+"base": "Node2D",
+"class": "Main",
+"language": "GDScript",
+"path": "res://Scripts/game.gd"
+} ]
 _global_script_class_icons={
-
+"Humanoid": "",
+"Main": ""
 }
 
 [application]
@@ -84,8 +95,14 @@ pause_game={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="enemy"
+2d_physics/layer_5="ground"
+
 [rendering]
 
 quality/2d/use_pixel_snap=true
-environment/default_clear_color=Color( 0.317647, 0.317647, 0.317647, 1 )
+environment/default_clear_color=Color( 0.239216, 0.239216, 0.239216, 1 )
 environment/default_environment="res://default_env.tres"

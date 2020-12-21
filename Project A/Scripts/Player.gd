@@ -5,6 +5,7 @@ signal hit
 export var speed = 500
 var screen_size 
 var sprite_size
+var velocity = Vector2()
 
 func _ready():
 	screen_size = get_viewport_rect().size
@@ -13,7 +14,6 @@ func _ready():
 	
 func _process(delta):
 	# Create the vector var and control the direction of the movements
-	var velocity = Vector2()
 	if Input.is_action_pressed("move_up"):
 		velocity.y -= 1
 	if Input.is_action_pressed("move_down"):

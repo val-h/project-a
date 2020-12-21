@@ -1,48 +1,27 @@
-extends KinematicBody2D
+extends Humanoid
 
-var GRAVITY = 50
-var MAX_FALL_SPEED = 1000
-var JUMP_FORCE = 1000
-
-export var speed = 500
-var screen_size 
-var sprite_size
-var y_velo = 0
-
-func _ready():
-	screen_size = get_viewport_rect().size
-	sprite_size = $Sprite.get_rect().size
-	
 func _physics_process(delta):
-	# Create the vector var and control the direction of the movements
-	var velocity = Vector2()
-#	if Input.is_action_pressed("move_up"):
-#		velocity.y -= 1
-#	if Input.is_action_pressed("move_down"):
-#		velocity.y += 1
-	if Input.is_action_pressed("move_left"):
-		velocity.x -= 1
-	if Input.is_action_pressed("move_right"):
-		velocity.x += 1
-		
-	# Normalizing the diagonal movements
-	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
-		
-	# Update the position of the player and set its limits
-	var grounded = is_on_floor()
-	y_velo += GRAVITY
-	position += velocity * delta
-	position.x = clamp(position.x, 0 + sprite_size.x / 2, screen_size.x - sprite_size.x / 2)
-#	position.y = clamp(position.y, 0 + sprite_size.y / 2, screen_size.y - sprite_size.y / 2)
-	if grounded and Input.is_action_just_pressed("move_up"):
-		y_velo -= JUMP_FORCE
-	if grounded and y_velo >=5:
-		y_velo = 5
-	if y_velo > MAX_FALL_SPEED:
-		y_velo = MAX_FALL_SPEED
-		
+	var _is_jump_interrupted = Input.is_action_just_released("move_up") and velocity.y < 0.0
+	var direction = get_direction()
+	velocity = calculate_move_velocity(velocity, direction, speed, _is_jump_interrupted)
+	velocity = move_and_slide(velocity, FLOOR_NORMAL)
 	
-	# Change the sprite orientation when the user presses space
+func _process(delta):
+	# Flip sprite
 	if velocity.x != 0:
 		$Sprite.flip_h = velocity.x < 0
+	
+func get_direction():
+	 return Vector2(
+		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
+		-1.0 if Input.is_action_just_pressed("move_up") and is_on_floor() else 0.0)
+	
+func calculate_move_velocity(velocity, direction, speed, _is_jump_interrupted):
+	var new_velocity = velocity
+	new_velocity.x = speed.x * direction.x
+	new_velocity.y += gravity * get_physics_process_delta_time()
+	if direction.y == -1.0:
+		new_velocity.y = speed.y * direction.y
+	if _is_jump_interrupted:
+		new_velocity.y = 0.0
+	return new_velocity
