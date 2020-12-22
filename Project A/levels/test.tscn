@@ -42,6 +42,7 @@ tile_data = PoolIntArray( 0, 11, 0, 1, 11, 0, 2, 11, 0, 3, 11, 0, 4, 11, 0, 5, 1
 
 [node name="SparklingStars" parent="Background" instance=ExtResource( 4 )]
 position = Vector2( 312.272, 99.5404 )
+frame = 0
 
 [node name="SparklingStars2" type="AnimatedSprite" parent="Background"]
 position = Vector2( 138.639, 166.685 )
@@ -53,18 +54,19 @@ playing = true
 [node name="SparklingStars3" type="AnimatedSprite" parent="Background"]
 position = Vector2( 480.688, 99.14 )
 frames = SubResource( 1 )
+frame = 1
 speed_scale = 0.8
 playing = true
 
 [node name="SparklingStars4" type="AnimatedSprite" parent="Background"]
 position = Vector2( 241.293, 410.694 )
 frames = SubResource( 1 )
-frame = 1
 playing = true
 
 [node name="SparklingStars5" type="AnimatedSprite" parent="Background"]
 position = Vector2( 705.138, 280.582 )
 frames = SubResource( 1 )
+frame = 1
 playing = true
 
 [node name="Stars" type="TileMap" parent="Background"]

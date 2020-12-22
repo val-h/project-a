@@ -25,3 +25,4 @@ func calculate_move_velocity(velocity, direction, speed, _is_jump_interrupted):
 	if _is_jump_interrupted:
 		new_velocity.y = 0.0
 	return new_velocity
+	
