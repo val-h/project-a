@@ -1,27 +1,44 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/Player-physics.gd" type="Script" id=1]
 [ext_resource path="res://art/charecters/toaster.png" type="Texture" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 25.1783
-height = 22.7091
+radius = 25.0181
+height = 18.9035
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 37.2808, 25.9759 )
 
 [node name="Player" type="KinematicBody2D"]
+position = Vector2( -0.225937, 0 )
+collision_mask = 16
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -26 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 7, 0 )
+position = Vector2( -0.229965, -25.7567 )
 rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( -0.225937, -24.4011 )
 current = true
 limit_left = 0
 limit_top = 0
 limit_smoothed = true
 drag_margin_left = 0.0
 drag_margin_right = 0.0
+
+[node name="EnemyDetector" type="Area2D" parent="."]
+position = Vector2( -0.225937, -24.627 )
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector"]
+position = Vector2( 0.451874, -0.903748 )
+shape = SubResource( 2 )
+[connection signal="area_entered" from="EnemyDetector" to="." method="_on_EnemyDetector_area_entered"]
+[connection signal="body_entered" from="EnemyDetector" to="." method="_on_EnemyDetector_body_entered"]

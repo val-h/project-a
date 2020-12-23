@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/BreadEnemy.gd" type="Script" id=1]
 [ext_resource path="res://art/bread_enemy.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 48.2694, 62.2341 )
+extents = Vector2( 48.2694, 51.9066 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 58.2582, 6.1569 )
 
 [node name="BreadEnemy" type="KinematicBody2D"]
 collision_layer = 2
@@ -15,5 +18,25 @@ script = ExtResource( 1 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -3.5589, 2.26474 )
+position = Vector2( -2.537, 12.5 )
 shape = SubResource( 1 )
+
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+position = Vector2( -4.59759, 2.21365 )
+scale = Vector2( 6.08514, 6.19357 )
+process_parent = true
+physics_process_parent = true
+
+[node name="StompArea" type="Area2D" parent="."]
+modulate = Color( 0.407843, 0.392157, 1, 1 )
+position = Vector2( 0.237823, -47.3839 )
+collision_layer = 2
+collision_mask = 17
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StompArea"]
+position = Vector2( -3.06506, -4.08674 )
+shape = SubResource( 2 )
+[connection signal="body_entered" from="StompArea" to="." method="_on_StompArea_body_entered"]
