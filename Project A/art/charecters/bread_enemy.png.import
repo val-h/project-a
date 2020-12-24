@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bread_enemy.png-695a31dcfd081eee14536983b5fe6051.stex"
+path="res://.import/bread_enemy.png-bff1b01bee6f931a340a4c6b8672e72e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/bread_enemy.png"
-dest_files=[ "res://.import/bread_enemy.png-695a31dcfd081eee14536983b5fe6051.stex" ]
+source_file="res://art/charecters/bread_enemy.png"
+dest_files=[ "res://.import/bread_enemy.png-bff1b01bee6f931a340a4c6b8672e72e.stex" ]
 
 [params]
 
