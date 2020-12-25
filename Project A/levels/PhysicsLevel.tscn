@@ -71,26 +71,22 @@ tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 60, 1, 0, 61, 1, 0, 65536, 1, 0, 655
 
 [node name="SparklingStars" parent="Enviorment" instance=ExtResource( 5 )]
 position = Vector2( 700.164, 190.181 )
-frame = 0
 
 [node name="SparklingStars2" parent="Enviorment" instance=ExtResource( 5 )]
 position = Vector2( 755.217, 516.886 )
+frame = 0
 
 [node name="SparklingStars3" parent="Enviorment" instance=ExtResource( 5 )]
 position = Vector2( 1268.74, 578.257 )
-frame = 0
 
 [node name="SparklingStars4" parent="Enviorment" instance=ExtResource( 5 )]
 position = Vector2( 2394.93, 724.225 )
-frame = 0
 
 [node name="SparklingStars5" parent="Enviorment" instance=ExtResource( 5 )]
 position = Vector2( 1539.65, 1160.12 )
-frame = 0
 
 [node name="SparklingStars6" parent="Enviorment" instance=ExtResource( 5 )]
 position = Vector2( 3487.02, 721.832 )
-frame = 0
 
 [node name="Planet" parent="Enviorment" instance=ExtResource( 6 )]
 position = Vector2( 299.452, 156.788 )
@@ -106,9 +102,13 @@ margin_bottom = 437.708
 
 [node name="Player" parent="." instance=ExtResource( 8 )]
 position = Vector2( 319.435, 1234.71 )
+speed = Vector2( 300, 1000 )
+gravity = 2500.0
+velocity = Vector2( 0, 0 )
+stomp_impulse = 1200
 
 [node name="Music" type="AudioStreamPlayer2D" parent="Player"]
-position = Vector2( -13.4169, -16.6993 )
+position = Vector2( -15.9345, 373.52 )
 stream = ExtResource( 9 )
 autoplay = true
 

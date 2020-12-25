@@ -1,7 +1,7 @@
 extends Node2D
 class_name Main
 
-signal playing
+#signal playing
 
 func _ready():
 	pass
