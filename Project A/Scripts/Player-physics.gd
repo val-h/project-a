@@ -12,7 +12,7 @@ func _on_EnemyDetector_body_entered(body):
 
 func _physics_process(delta):
 	# This possibly causes the jump problem
-	#var _is_jump_interrupted = Input.is_action_just_released("move_up") and velocity.y < 0.0
+	var _is_jump_interrupted = Input.is_action_just_released("move_up") and velocity.y < 0.0
 	# maybe not, still the sam result
 	
 	var direction = get_direction()
@@ -37,7 +37,9 @@ func _process(delta):
 func get_direction():
 	 return Vector2(
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
-		-1.0 if Input.get_action_strength("move_up") and is_on_floor() else 0.0)
+		-1.0 if Input.is_action_pressed("move_up") else 0.0)
+		# After the input taje, the is_on_floor method doesn't work for some reaseon
+		# Like this the charecter can jump infinetly and creates a fun mechanic :D
 	
 func calculate_move_velocity(velocity, direction, speed): # is_jump_interupted removed as an argument
 	var new_velocity = velocity
