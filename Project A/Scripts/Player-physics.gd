@@ -11,13 +11,8 @@ func _on_EnemyDetector_body_entered(body):
 	queue_free()
 
 func _physics_process(delta):
-	# This possibly causes the jump problem
-	var _is_jump_interrupted = Input.is_action_just_released("move_up") and velocity.y < 0.0
-	# maybe not, still the sam result
+	pass
 	
-	var direction = get_direction()
-	velocity = calculate_move_velocity(velocity, direction, speed)
-		
 func _process(delta):
 	# Flip sprite
 	if velocity.x != 0:
@@ -30,25 +25,32 @@ func _process(delta):
 	# UPDATE: absolutely no stutter on moving sprites with this method.
 	
 	# NOTE: Now the jump doesn't work properly for the player.
+	# When the whole calculation was moved here it worked fine.
+	# Future note, this could result in perforamnce loss
 	
-	# Moved from physics
+	# Moved from _physics_process
+	var _is_jump_interrupted = Input.is_action_just_released("move_up") and velocity.y < 0.0
+	var direction = get_direction()
+	velocity = calculate_move_velocity(velocity, direction, speed, _is_jump_interrupted)
 	velocity = move_and_slide(velocity, FLOOR_NORMAL)
 	
 func get_direction():
-	 return Vector2(
+	return Vector2(
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
-		-1.0 if Input.is_action_pressed("move_up") else 0.0)
-		# After the input taje, the is_on_floor method doesn't work for some reaseon
+		-1.0 if Input.get_action_strength("move_up") and is_on_floor() else 0.0)
+		# After the input take, the is_on_floor method doesn't work for some reaseon
+		# Update: The charecter can only jump while not moving.
 		# Like this the charecter can jump infinetly and creates a fun mechanic :D
 	
-func calculate_move_velocity(velocity, direction, speed): # is_jump_interupted removed as an argument
+func calculate_move_velocity(velocity, direction, speed, _is_jump_interrupted):
 	var new_velocity = velocity
 	new_velocity.x = speed.x * direction.x
-	new_velocity.y += gravity * get_physics_process_delta_time()
+	# Gravity moved to the Humanoid base class
+	#new_velocity.y += gravity * get_physics_process_delta_time()
 	if direction.y == -1.0:
 		new_velocity.y = speed.y * direction.y
-#	if _is_jump_interrupted:
-#		new_velocity.y = 0.0
+	if _is_jump_interrupted:
+		new_velocity.y = 0.0
 	return new_velocity
 	
 func calculate_stomp_velocity(velocity, impulse):

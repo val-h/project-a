@@ -27,12 +27,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Project A"
-run/main_scene="res://levels/PhysicsLevel.tscn"
+run/main_scene="res://scenes/TitleScreen.tscn"
 config/icon="res://art/planet.png"
 
 [display]
 
-window/size/width=1980
+window/size/width=1920
 window/size/height=1080
 window/size/resizable=false
 window/size/borderless=true

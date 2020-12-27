@@ -1,6 +1,9 @@
 extends "res://Scripts/Humanoid.gd"
 
 func _ready():
+	# Change the speed for movement
+	speed.x = 300
+	
 	# For VisibilityNotifier, doesn't work properly
 	# nvm the problem is not from it ;d
 	#set_physics_process(false)
@@ -8,16 +11,16 @@ func _ready():
 
 func _on_StompArea_body_entered(body):
 #	if body.global_position.y > $StompArea.global_position.y:
-#		 return
+#		return
 	
 	# Causes the enemy not to be killed, sometimes returns an error
-	# >> can't change state while flushing queries. 
-	#$CollisionShape2D.disabled = true
-	
+	# no longer returns an error with set_deffered, but doesn't work properly
+	#$CollisionShape2D.set_deferred('disabled', true)
 	queue_free()
 
 func _physics_process(delta):
-	velocity.y += gravity * delta
+	#Gravity moved to the Humanoid base class
+	#velocity.y += gravity * delta
 	if is_on_wall():
 		velocity.x *= -1.0
 	

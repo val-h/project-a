@@ -4,10 +4,10 @@
 [ext_resource path="res://art/charecters/bread_enemy.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 55.5795, 51.9066 )
+extents = Vector2( 51.0761, 45.0587 )
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 55.3941, 7.82217 )
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 56.8153, 8.67358 )
 
 [node name="BreadEnemy" type="KinematicBody2D"]
 collision_layer = 2
@@ -18,19 +18,15 @@ script = ExtResource( 1 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -2.537, 12.5 )
+position = Vector2( 1.54975, 14.8839 )
 shape = SubResource( 1 )
 
 [node name="StompArea" type="Area2D" parent="."]
 modulate = Color( 0.407843, 0.392157, 1, 1 )
-position = Vector2( -0.102738, -58.2819 )
+position = Vector2( -0.78386, -62.3686 )
 collision_layer = 2
-collision_mask = 17
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StompArea"]
-position = Vector2( -2.72451, 7.83293 )
-shape = SubResource( 2 )
+position = Vector2( 7.62939e-006, 13.2819 )
+shape = SubResource( 3 )
 [connection signal="body_entered" from="StompArea" to="." method="_on_StompArea_body_entered"]
