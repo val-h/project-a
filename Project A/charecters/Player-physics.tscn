@@ -4,8 +4,8 @@
 [ext_resource path="res://art/charecters/toaster.png" type="Texture" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 23.1378
-height = 28.3626
+radius = 24.6657
+height = 17.4052
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 24.3841

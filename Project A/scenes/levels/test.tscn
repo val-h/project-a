@@ -16,12 +16,6 @@
 [ext_resource path="res://charecters/Player.tscn" type="PackedScene" id=14]
 [ext_resource path="res://art/charecters/bread_enemy.png" type="Texture" id=15]
 
-
-
-
-
-
-
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
@@ -60,7 +54,6 @@ playing = true
 [node name="SparklingStars3" type="AnimatedSprite" parent="Background"]
 position = Vector2( 480.688, 99.14 )
 frames = SubResource( 1 )
-frame = 1
 speed_scale = 0.8
 playing = true
 

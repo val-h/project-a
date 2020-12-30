@@ -1,13 +1,18 @@
 extends Humanoid
 
+signal player_killed
+
 onready var player_sprite = $Sprite
 
 export var stomp_impulse = 1200
 
+# Stomping over enemy
 func _on_EnemyDetector_area_entered(area):
 	velocity = calculate_stomp_velocity(velocity, stomp_impulse)
 
+# Player killed by enemy
 func _on_EnemyDetector_body_entered(body):
+	emit_signal("player_killed")
 	queue_free()
 
 func _physics_process(delta):
@@ -32,6 +37,7 @@ func _process(delta):
 	var _is_jump_interrupted = Input.is_action_just_released("move_up") and velocity.y < 0.0
 	var direction = get_direction()
 	velocity = calculate_move_velocity(velocity, direction, speed, _is_jump_interrupted)
+	# Perfect scenario, move_and_slide stays here and the rest goes to _physics. Ofcourse, bugfree.
 	velocity = move_and_slide(velocity, FLOOR_NORMAL)
 	
 func get_direction():
@@ -57,3 +63,6 @@ func calculate_stomp_velocity(velocity, impulse):
 	var _velocity = velocity
 	_velocity.y = -impulse
 	return _velocity
+	
+func start(pos):
+	position = pos

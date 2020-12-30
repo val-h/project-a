@@ -15,7 +15,7 @@ func _on_StompArea_body_entered(body):
 	
 	# Causes the enemy not to be killed, sometimes returns an error
 	# no longer returns an error with set_deffered, but doesn't work properly
-	#$CollisionShape2D.set_deferred('disabled', true)
+	$CollisionShape2D.set_deferred("disabled", true)
 	queue_free()
 
 func _physics_process(delta):

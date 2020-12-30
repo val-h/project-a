@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://art/gui/label_HP_bg.png" type="Texture" id=1]
 [ext_resource path="res://art/gui/label_HP.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://art/gui/label_EP.png" type="Texture" id=6]
 [ext_resource path="res://art/gui/energy_bar_bg.png" type="Texture" id=7]
 [ext_resource path="res://art/gui/energy_bar_fill.png" type="Texture" id=8]
+[ext_resource path="res://WIP.tscn" type="PackedScene" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 28
@@ -25,9 +26,7 @@ font_data = ExtResource( 3 )
 
 [node name="GUI" type="MarginContainer"]
 anchor_right = 1.0
-margin_left = 0.463287
-margin_right = 0.463257
-margin_bottom = 84.0
+anchor_bottom = 1.0
 size_flags_horizontal = 3
 custom_constants/margin_right = 50
 custom_constants/margin_top = 20
@@ -35,14 +34,17 @@ custom_constants/margin_left = 50
 custom_constants/margin_bottom = 20
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+editor/display_folded = true
 margin_left = 50.0
 margin_top = 20.0
-margin_right = 1870.0
-margin_bottom = 133.0
+margin_right = 561.0
+margin_bottom = 1060.0
+size_flags_horizontal = 0
 
 [node name="Bars" type="VBoxContainer" parent="HBoxContainer"]
 margin_right = 511.0
-margin_bottom = 113.0
+margin_bottom = 1040.0
+size_flags_horizontal = 3
 custom_constants/separation = 10
 
 [node name="Bar" type="HBoxContainer" parent="HBoxContainer/Bars"]
@@ -115,10 +117,10 @@ stretch_mode = 4
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -44.3027
-margin_top = -0.59874
-margin_right = -14.3027
-margin_bottom = -0.59874
+margin_left = -36.9261
+margin_top = -0.906098
+margin_right = -6.92613
+margin_bottom = -0.906097
 custom_fonts/font = SubResource( 2 )
 text = "77"
 align = 2
@@ -132,7 +134,17 @@ value = 77.0
 texture_under = ExtResource( 7 )
 texture_progress = ExtResource( 8 )
 
-[node name="Counters" type="HBoxContainer" parent="HBoxContainer/Bars"]
-margin_top = 113.0
-margin_right = 511.0
-margin_bottom = 113.0
+[node name="TempSolution" type="HBoxContainer" parent="."]
+margin_left = 1612.0
+margin_top = 1019.0
+margin_right = 1870.0
+margin_bottom = 1060.0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+alignment = 2
+
+[node name="WIP" parent="TempSolution" instance=ExtResource( 9 )]
+margin_right = 258.0
+margin_bottom = 41.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
