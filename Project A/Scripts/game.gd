@@ -1,6 +1,8 @@
 extends Node2D
 class_name Main
 
+signal player_spawned(PlayerNode)
+
 # References
 # Players will be set at the specific level.
 export(PackedScene) var Player
@@ -11,8 +13,8 @@ export(PackedScene) var Music
 # path and doing it directly.
 onready var GUI = get_node("UI/GUI")
 # To be added to the GUI
-onready var game_over_label = get_node("UI/GameOver")
-onready var revive_label = $UI/ReviveLabel
+onready var game_over_label = get_node("UI/GameOverLabel")
+onready var new_game_label = $UI/NewGameLabel
 
 var playing
 var paused = false
@@ -20,6 +22,8 @@ var player
 var music_bg
 
 func _ready():
+	# Connect the player to the gui
+	connect("player_spawned", GUI, "_get_player")
 	# Possibly set by the level
 	#new_game()
 	pass
@@ -43,15 +47,17 @@ func _process(delta):
 		# Hide paused label
 
 func new_game():
-	GUI.show()
+	#GUI.show()
+	GUI.reset_gui()
+	
 	game_over_label.hide()
-	revive_label.hide()
+	new_game_label.hide()
 	
 	# Instance and add the player to the scene
 	player = Player.instance()
 	add_child(player)
 	# Connect the player's signal to the script
-	player.connect("player_killed", self, "_on_Player_player_killed") 
+	player.connect("killed", self, "_on_Player_killed") 
 	
 	# Add the music
 	_set_music()
@@ -59,12 +65,15 @@ func new_game():
 	# Set the player's position on every new game to the start pos
 	player.start($StartPosition.position)
 	
+	# Emit signal to the GUI that the player is spawned and pass the node
+	emit_signal("player_spawned", player)
+	
 	playing = true
 
 func player_killed():
-	GUI.hide()
+	#GUI.hide()
 	game_over_label.show()
-	revive_label.show()
+	new_game_label.show()
 	
 	playing = false
 

@@ -1,6 +1,7 @@
 extends Humanoid
 
-signal player_killed
+signal killed
+signal hit(current_health)
 
 onready var player_sprite = $Sprite
 
@@ -12,8 +13,15 @@ func _on_EnemyDetector_area_entered(area):
 
 # Player killed by enemy
 func _on_EnemyDetector_body_entered(body):
-	emit_signal("player_killed")
-	queue_free()
+	# Different enemies, obstacles and traps would have different damage
+	# I'm still thinking of a no UI game where the playere isn't exposed
+	# to any variables from the game and plays by feel.
+	var damage = 17
+	_update_health(damage)
+
+func _ready():
+	# Just testing out
+	pass
 
 func _physics_process(delta):
 	pass
@@ -66,3 +74,11 @@ func calculate_stomp_velocity(velocity, impulse):
 	
 func start(pos):
 	position = pos
+
+func _update_health(damage):
+	health -= damage
+	health = max(health, 0.0)
+	emit_signal("hit", health)
+	if health <= 0.0:
+		emit_signal("killed")
+		queue_free()

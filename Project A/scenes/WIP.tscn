@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://fonts/karma_font.tres" type="DynamicFont" id=1]
+
+[node name="MarginContainer" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 25
+custom_constants/margin_bottom = 40
+
+[node name="WIP" type="Label" parent="."]
+margin_left = 1637.0
+margin_top = 999.0
+margin_right = 1895.0
+margin_bottom = 1040.0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+custom_fonts/font = ExtResource( 1 )
+text = "work in progress"
+align = 1
+valign = 1
+uppercase = true
