@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/planet.png-95b25cb883b0ba5f715facd198756b28.stex"
+path="res://.import/Battery.png-242a45b7b411b44f2790fdc989c240fc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/planet.png"
-dest_files=[ "res://.import/planet.png-95b25cb883b0ba5f715facd198756b28.stex" ]
+source_file="res://art/objects/Battery.png"
+dest_files=[ "res://.import/Battery.png-242a45b7b411b44f2790fdc989c240fc.stex" ]
 
 [params]
 

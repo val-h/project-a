@@ -124,7 +124,7 @@ text = "Settings"
 [node name="Exit" type="Button" parent="HBoxContainer/VBoxContainer/MarginContainer/MenuOptions"]
 margin_top = 372.0
 margin_right = 880.0
-margin_bottom = 457.0
+margin_bottom = 458.0
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 5 )
 text = "Exit"

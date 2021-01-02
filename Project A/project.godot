@@ -28,7 +28,7 @@ _global_script_class_icons={
 
 config/name="Project A"
 run/main_scene="res://scenes/TitleScreen.tscn"
-config/icon="res://art/planet.png"
+config/icon="res://art/objects/planet.png"
 
 [display]
 
@@ -101,6 +101,7 @@ pause_game={
 
 2d_physics/layer_1="player"
 2d_physics/layer_2="enemy"
+2d_physics/layer_3="pickable"
 2d_physics/layer_5="ground"
 
 [rendering]
