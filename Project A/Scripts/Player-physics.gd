@@ -9,15 +9,19 @@ export var stomp_impulse = 1200
 
 # Stomping over enemy
 func _on_EnemyDetector_area_entered(area):
-	velocity = calculate_stomp_velocity(velocity, stomp_impulse)
+	# in case the player colides with an enemy area
+	# temporary solution
+	if area.collision_layer == 2:
+		velocity = calculate_stomp_velocity(velocity, stomp_impulse)
+	if area.name == "GreenSpikes":
+		_update_health(area.damage)
 
 # Player killed by enemy
 func _on_EnemyDetector_body_entered(body):
 	# Different enemies, obstacles and traps would have different damage
 	# I'm still thinking of a no UI game where the playere isn't exposed
 	# to any variables from the game and plays by feel.
-	var damage = 17
-	_update_health(damage)
+	_update_health(body.damage)
 
 func _ready():
 	# Just testing out

@@ -35,7 +35,6 @@ config/icon="res://art/objects/planet.png"
 window/size/width=1920
 window/size/height=1080
 window/size/resizable=false
-window/size/fullscreen=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
@@ -102,6 +101,7 @@ pause_game={
 2d_physics/layer_1="player"
 2d_physics/layer_2="enemy"
 2d_physics/layer_3="pickable"
+2d_physics/layer_4="obstacle"
 2d_physics/layer_5="ground"
 
 [rendering]

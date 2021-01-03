@@ -86,3 +86,7 @@ func _set_music():
 	music_bg = Music.instance()
 	music_bg.autoplay = true
 	player.add_child(music_bg)
+
+# Warnings
+func _get_configuration_warning():
+	return "The next scene property can't be empty." if not Player else ""

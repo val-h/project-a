@@ -1,5 +1,7 @@
 extends "res://Scripts/Humanoid.gd"
 
+export var damage = 17
+
 func _ready():
 	# Change the speed for movement
 	speed.x = 300
