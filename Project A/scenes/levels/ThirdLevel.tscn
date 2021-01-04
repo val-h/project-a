@@ -3,14 +3,15 @@
 [ext_resource path="res://Scripts/PhysicsLevel.gd" type="Script" id=1]
 [ext_resource path="res://charecters/Player-physics.tscn" type="PackedScene" id=2]
 [ext_resource path="res://sounds/Music.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Prefabs/Lastbackground.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Prefabs/UI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/Lastbackground.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/UI.tscn" type="PackedScene" id=5]
 [ext_resource path="res://tilesets/stars_tileset.tres" type="TileSet" id=6]
 [ext_resource path="res://tilesets/GroundTiles.tres" type="TileSet" id=7]
-[ext_resource path="res://Prefabs/SparklingStars.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Prefabs/Planet.tscn" type="PackedScene" id=9]
+[ext_resource path="res://objects/SparklingStars.tscn" type="PackedScene" id=8]
+[ext_resource path="res://objects/Planet.tscn" type="PackedScene" id=9]
 [ext_resource path="res://charecters/BreadEnemy.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Prefabs/Battery.tscn" type="PackedScene" id=11]
+[ext_resource path="res://objects/Battery.tscn" type="PackedScene" id=11]
+
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 1 )

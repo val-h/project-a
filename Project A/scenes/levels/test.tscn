@@ -3,11 +3,11 @@
 [ext_resource path="res://Scripts/Node.gd" type="Script" id=1]
 [ext_resource path="res://charecters/PlanetMob.tscn" type="PackedScene" id=2]
 [ext_resource path="res://tilesets/space_tileset.tres" type="TileSet" id=3]
-[ext_resource path="res://Prefabs/SparklingStars.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/SparklingStars.tscn" type="PackedScene" id=4]
 [ext_resource path="res://art/textures/space/space texture3.png" type="Texture" id=5]
 [ext_resource path="res://art/textures/space/space texture4.png" type="Texture" id=6]
 [ext_resource path="res://tilesets/stars_tileset.tres" type="TileSet" id=7]
-[ext_resource path="res://Prefabs/Planet.tscn" type="PackedScene" id=8]
+[ext_resource path="res://objects/Planet.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/WIP.tscn" type="PackedScene" id=9]
 [ext_resource path="res://fonts/karma_font.tres" type="DynamicFont" id=10]
 [ext_resource path="res://Scripts/pause.gd" type="Script" id=11]
@@ -15,6 +15,7 @@
 [ext_resource path="res://sounds/oof_sound.wav" type="AudioStream" id=13]
 [ext_resource path="res://charecters/Player.tscn" type="PackedScene" id=14]
 [ext_resource path="res://art/charecters/bread_enemy.png" type="Texture" id=15]
+
 
 
 [sub_resource type="SpriteFrames" id=1]

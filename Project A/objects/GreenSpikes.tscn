@@ -18,7 +18,7 @@ initial_velocity_random = 0.34
 angular_velocity = -253.19
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale = 0.2
+scale = 0.4
 scale_random = 0.4
 color = Color( 0.341176, 1, 0.380392, 0.541176 )
 
@@ -36,8 +36,10 @@ position = Vector2( 0, -29.9258 )
 shape = SubResource( 1 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
-amount = 10
+emitting = false
+amount = 14
 lifetime = 1.5
+one_shot = true
 process_material = SubResource( 2 )
 texture = ExtResource( 3 )
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

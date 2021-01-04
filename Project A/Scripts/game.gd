@@ -24,6 +24,7 @@ var music_bg
 func _ready():
 	# Connect the player to the gui
 	connect("player_spawned", GUI, "_get_player")
+	
 	# Possibly set by the level
 	#new_game()
 	pass

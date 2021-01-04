@@ -3,17 +3,17 @@
 [ext_resource path="res://Scripts/PhysicsLevel.gd" type="Script" id=1]
 [ext_resource path="res://charecters/Player-physics.tscn" type="PackedScene" id=2]
 [ext_resource path="res://sounds/Music.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Prefabs/Lastbackground.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Prefabs/UI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/Lastbackground.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/UI.tscn" type="PackedScene" id=5]
 [ext_resource path="res://tilesets/stars_tileset.tres" type="TileSet" id=6]
 [ext_resource path="res://tilesets/GroundTiles.tres" type="TileSet" id=7]
-[ext_resource path="res://Prefabs/SparklingStars.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Prefabs/Planet.tscn" type="PackedScene" id=9]
-[ext_resource path="res://charecters/BreadEnemy.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Prefabs/Battery.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Prefabs/Portal.tscn" type="PackedScene" id=12]
-[ext_resource path="res://scenes/levels/SecondLevel.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Prefabs/GreenSpikes.tscn" type="PackedScene" id=14]
+[ext_resource path="res://objects/SparklingStars.tscn" type="PackedScene" id=8]
+[ext_resource path="res://objects/Planet.tscn" type="PackedScene" id=9]
+[ext_resource path="res://objects/Portal.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/levels/SecondLevel.tscn" type="PackedScene" id=11]
+[ext_resource path="res://objects/GreenSpikes.tscn" type="PackedScene" id=12]
+[ext_resource path="res://charecters/BreadEnemy.tscn" type="PackedScene" id=13]
+[ext_resource path="res://objects/Battery.tscn" type="PackedScene" id=14]
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 1 )
@@ -25,6 +25,7 @@ Music = ExtResource( 3 )
 [node name="UI" parent="." instance=ExtResource( 5 )]
 
 [node name="Enviorment" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="BackgroundStars" type="TileMap" parent="Enviorment"]
 tile_set = ExtResource( 6 )
@@ -48,22 +49,26 @@ format = 1
 
 [node name="SparklingStars" parent="Enviorment" instance=ExtResource( 8 )]
 position = Vector2( 700.164, 190.181 )
+frame = 0
 
 [node name="SparklingStars2" parent="Enviorment" instance=ExtResource( 8 )]
 position = Vector2( 755.217, 516.886 )
-frame = 0
 
 [node name="SparklingStars3" parent="Enviorment" instance=ExtResource( 8 )]
 position = Vector2( 1268.74, 578.257 )
+frame = 0
 
 [node name="SparklingStars4" parent="Enviorment" instance=ExtResource( 8 )]
 position = Vector2( 2394.93, 724.225 )
+frame = 0
 
 [node name="SparklingStars5" parent="Enviorment" instance=ExtResource( 8 )]
 position = Vector2( 1539.65, 1160.12 )
+frame = 0
 
 [node name="SparklingStars6" parent="Enviorment" instance=ExtResource( 8 )]
 position = Vector2( 3487.02, 721.832 )
+frame = 0
 
 [node name="Planet" parent="Enviorment" instance=ExtResource( 9 )]
 position = Vector2( 299.452, 156.788 )
@@ -74,63 +79,99 @@ position = Vector2( 1794.9, 271.406 )
 [node name="StartPosition" type="Position2D" parent="."]
 position = Vector2( 380, 1280 )
 
-[node name="BreadEnemy" parent="." groups=[
+[node name="Portal" parent="." instance=ExtResource( 10 )]
+position = Vector2( 2872.43, 978.788 )
+next_scene = ExtResource( 11 )
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="GreenSpikes2" parent="Obstacles" instance=ExtResource( 12 )]
+position = Vector2( 603.94, 1407.86 )
+
+[node name="GreenSpikes" parent="Obstacles" instance=ExtResource( 12 )]
+position = Vector2( 1849.58, 1536.06 )
+
+[node name="GreenSpikes3" parent="Obstacles" instance=ExtResource( 12 )]
+position = Vector2( 437.608, 384.139 )
+
+[node name="GreenSpikes4" parent="Obstacles" instance=ExtResource( 12 )]
+position = Vector2( 703.655, 128.663 )
+
+[node name="GreenSpikes5" parent="Obstacles" instance=ExtResource( 12 )]
+position = Vector2( 2875.43, 1279.81 )
+
+[node name="GreenSpikes6" parent="Obstacles" instance=ExtResource( 12 )]
+position = Vector2( 2672.33, 575.328 )
+
+[node name="GreenSpikes7" parent="Obstacles" instance=ExtResource( 12 )]
+position = Vector2( 3602.6, 1343.61 )
+
+[node name="Enemies" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="BreadEnemy" parent="Enemies" groups=[
 "brea_enemies",
-] instance=ExtResource( 10 )]
+] instance=ExtResource( 13 )]
 position = Vector2( 1526.2, 125.634 )
 
-[node name="BreadEnemy2" parent="." groups=[
+[node name="BreadEnemy2" parent="Enemies" groups=[
 "brea_enemies",
-] instance=ExtResource( 10 )]
+] instance=ExtResource( 13 )]
 position = Vector2( 3081.14, 569.904 )
 
-[node name="BreadEnemy3" parent="." groups=[
+[node name="BreadEnemy3" parent="Enemies" groups=[
 "brea_enemies",
-] instance=ExtResource( 10 )]
+] instance=ExtResource( 13 )]
 position = Vector2( 3670.47, 1528.88 )
 
-[node name="BreadEnemy4" parent="." groups=[
+[node name="BreadEnemy4" parent="Enemies" groups=[
 "brea_enemies",
-] instance=ExtResource( 10 )]
+] instance=ExtResource( 13 )]
 editor/display_folded = true
 position = Vector2( 1031.82, 1204.57 )
 
-[node name="BreadEnemy5" parent="." groups=[
+[node name="BreadEnemy5" parent="Enemies" groups=[
 "brea_enemies",
-] instance=ExtResource( 10 )]
+] instance=ExtResource( 13 )]
 position = Vector2( 1439.35, 1530.26 )
 
-[node name="BreadEnemy6" parent="." groups=[
+[node name="BreadEnemy6" parent="Enemies" groups=[
 "brea_enemies",
-] instance=ExtResource( 10 )]
+] instance=ExtResource( 13 )]
 position = Vector2( 2406.39, 1528.59 )
 
-[node name="BreadEnemy7" parent="." groups=[
+[node name="BreadEnemy7" parent="Enemies" groups=[
 "brea_enemies",
-] instance=ExtResource( 10 )]
+] instance=ExtResource( 13 )]
 position = Vector2( 435.566, 1532.78 )
 
-[node name="BreadEnemy9" parent="." groups=[
+[node name="BreadEnemy9" parent="Enemies" groups=[
 "brea_enemies",
-] instance=ExtResource( 10 )]
+] instance=ExtResource( 13 )]
 position = Vector2( 443.119, 873.183 )
 
-[node name="BreadEnemy8" parent="." groups=[
+[node name="BreadEnemy8" parent="Enemies" groups=[
 "brea_enemies",
-] instance=ExtResource( 10 )]
+] instance=ExtResource( 13 )]
 position = Vector2( 1192.3, 426.948 )
 
-[node name="Battery" parent="." instance=ExtResource( 11 )]
+[node name="Pickables" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="Battery" parent="Pickables" instance=ExtResource( 14 )]
 position = Vector2( 1047.55, 1477.91 )
 
-[node name="Battery2" parent="." instance=ExtResource( 11 )]
+[node name="Battery2" parent="Pickables" instance=ExtResource( 14 )]
 position = Vector2( 175.116, 1228.31 )
 
-[node name="Portal" parent="." instance=ExtResource( 12 )]
-position = Vector2( 2872.43, 978.788 )
-next_scene = ExtResource( 13 )
+[node name="Battery3" parent="Pickables" instance=ExtResource( 14 )]
+position = Vector2( 175.763, 223.151 )
 
-[node name="GreenSpikes" parent="." instance=ExtResource( 14 )]
-position = Vector2( 1849.58, 1536.06 )
+[node name="Battery4" parent="Pickables" instance=ExtResource( 14 )]
+position = Vector2( 1636.71, 100.459 )
 
-[editable path="BreadEnemy4"]
+[node name="Battery5" parent="Pickables" instance=ExtResource( 14 )]
+position = Vector2( 3808.82, 36.8409 )
+
+[node name="Battery6" parent="Pickables" instance=ExtResource( 14 )]
+position = Vector2( 2911.35, 1543.23 )
