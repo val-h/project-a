@@ -18,6 +18,7 @@ func _process(delta):
 	# Bar animation
 	# I really don;t like it being processed constantly
 	# To be put into a function called only when needed
+	# set_process() could be used here.
 	var rounded_animated_health = round(animated_health)
 	hp_number_label.text = str(rounded_animated_health)
 	hp_bar.value = rounded_animated_health

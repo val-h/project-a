@@ -13,7 +13,7 @@ export var speed: = Vector2(350.0, 1000.0)
 # These could be based on the level, space - no gravity
 # different planets, different gravity
 export var gravity: = 2500.0
-export var max_gravity = 5000
+export var max_gravity = 7500.0
 
 export var velocity: = Vector2()
 

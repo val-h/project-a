@@ -16,6 +16,12 @@ export var stomp_impulse = 1200
 export var stomp_health_reward = 5
 export var stomp_energy_reward = 15
 
+# Dashing
+export var dash_velocity = 150000 # Check the slide part of move_and_slide, possibly the root of the problem
+export var dash_cooldown = 1.0
+export var dash_energy_cost = 0
+var dash_enabled = true
+
 var disable_jump = false
 
 # Stomping over enemy
@@ -38,10 +44,16 @@ func _on_EnemyDetector_body_entered(body):
 	# I'm still thinking of a no UI game where the playere isn't exposed
 	# to any variables from the game and plays by feel.
 	_update_health(-body.damage)
+	
+# Dash cooldown
+func _on_CooldownTimer_timeout():
+	dash_enabled = true
 
 func _ready():
 	# Just testing out
 	pass
+	$CooldownTimer.wait_time = dash_cooldown
+	$CooldownTimer.connect("timeout", self, "_on_CooldownTimer_timeout")
 
 func _physics_process(delta):
 	pass
@@ -65,6 +77,9 @@ func _process(delta):
 	var _is_jump_interrupted = Input.is_action_just_released("move_up") and velocity.y < 0.0
 	var direction = get_direction()
 	velocity = calculate_move_velocity(velocity, direction, speed, _is_jump_interrupted)
+	# Das, poor implementation
+	if dash_enabled:
+		velocity = check_dashing(velocity)
 	# Perfect scenario, move_and_slide stays here and the rest goes to _physics. Ofcourse, bugfree.
 	velocity = move_and_slide(velocity, FLOOR_NORMAL)
 	
@@ -93,8 +108,23 @@ func calculate_stomp_velocity(velocity, impulse):
 	_velocity.y = -impulse
 	return _velocity
 	
+func check_dashing(velocity):
+	var _velocity = velocity
+	if Input.is_action_pressed("dash_left"):
+		_velocity.x = -dash_velocity
+		dashed()
+	elif Input.is_action_pressed("dash_right"):
+		_velocity.x = dash_velocity
+		dashed()
+	return _velocity
+	
 func start(pos):
 	position = pos
+
+func dashed():
+	dash_enabled = false
+	_update_energy(dash_energy_cost)
+	$CooldownTimer.start()
 
 # It will be used in the future with positive values
 func _update_health(health_amount):
