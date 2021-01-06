@@ -1,9 +1,6 @@
 extends KinematicBody2D
 class_name Humanoid
 
-export var max_health = 100
-export var health = 100
-
 # All of these variables are to be moved to the level processes, and the player 
 # could use the variables specific to the level, having different properties on
 # each level.

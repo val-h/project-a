@@ -30,6 +30,10 @@ config/name="Project A"
 run/main_scene="res://scenes/TitleScreen.tscn"
 config/icon="res://art/objects/planet.png"
 
+[autoload]
+
+PlayerVariables="*res://scenes/PlayerVariables.tscn"
+
 [display]
 
 window/size/width=1920

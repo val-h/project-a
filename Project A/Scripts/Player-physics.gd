@@ -6,9 +6,12 @@ signal energy_changed(energy)
 
 onready var player_sprite = $Sprite
 
-# Energy values
-export var max_energy = 100
-export var energy = 100
+var max_health = PlayerVariables.max_health
+var health = PlayerVariables.health
+var max_energy = PlayerVariables.max_energy
+var energy = PlayerVariables.energy
+
+
 # Preferably a negative value
 export var jump_cost = -5
 # Stomp values
@@ -17,10 +20,10 @@ export var stomp_health_reward = 5
 export var stomp_energy_reward = 15
 
 # Dashing
-export var dash_velocity = 150000 # Check the slide part of move_and_slide, possibly the root of the problem
-export var dash_cooldown = 1.0
-export var dash_energy_cost = 0
-var dash_enabled = true
+#export var dash_velocity = 150000 # Check the slide part of move_and_slide, possibly the root of the problem
+#export var dash_cooldown = 1.0
+#export var dash_energy_cost = 0
+#var dash_enabled = true
 
 var disable_jump = false
 
@@ -46,14 +49,15 @@ func _on_EnemyDetector_body_entered(body):
 	_update_health(-body.damage)
 	
 # Dash cooldown
-func _on_CooldownTimer_timeout():
-	dash_enabled = true
+#func _on_CooldownTimer_timeout():
+#	dash_enabled = true
 
 func _ready():
 	# Just testing out
 	pass
-	$CooldownTimer.wait_time = dash_cooldown
-	$CooldownTimer.connect("timeout", self, "_on_CooldownTimer_timeout")
+	#CooldownTimer removed as a node
+#	$CooldownTimer.wait_time = dash_cooldown
+#	$CooldownTimer.connect("timeout", self, "_on_CooldownTimer_timeout")
 
 func _physics_process(delta):
 	pass
@@ -77,9 +81,9 @@ func _process(delta):
 	var _is_jump_interrupted = Input.is_action_just_released("move_up") and velocity.y < 0.0
 	var direction = get_direction()
 	velocity = calculate_move_velocity(velocity, direction, speed, _is_jump_interrupted)
-	# Das, poor implementation
-	if dash_enabled:
-		velocity = check_dashing(velocity)
+	# Dash, poor implementation
+#	if dash_enabled:
+#		velocity = check_dashing(velocity)
 	# Perfect scenario, move_and_slide stays here and the rest goes to _physics. Ofcourse, bugfree.
 	velocity = move_and_slide(velocity, FLOOR_NORMAL)
 	
@@ -107,29 +111,33 @@ func calculate_stomp_velocity(velocity, impulse):
 	var _velocity = velocity
 	_velocity.y = -impulse
 	return _velocity
-	
-func check_dashing(velocity):
-	var _velocity = velocity
-	if Input.is_action_pressed("dash_left"):
-		_velocity.x = -dash_velocity
-		dashed()
-	elif Input.is_action_pressed("dash_right"):
-		_velocity.x = dash_velocity
-		dashed()
-	return _velocity
+
+# Not in use
+#func check_dashing(velocity):
+#	var _velocity = velocity
+#	if Input.is_action_pressed("dash_left"):
+#		_velocity.x = -dash_velocity
+#		dashed()
+#	elif Input.is_action_pressed("dash_right"):
+#		_velocity.x = dash_velocity
+#		dashed()
+#	return _velocity
+#
+#func dashed():
+#	dash_enabled = false
+#	_update_energy(dash_energy_cost)
+#	$CooldownTimer.start()
 	
 func start(pos):
 	position = pos
 
-func dashed():
-	dash_enabled = false
-	_update_energy(dash_energy_cost)
-	$CooldownTimer.start()
-
 # It will be used in the future with positive values
 func _update_health(health_amount):
 	health += health_amount
-	health = max(health, 0.0)
+	if health <= 0.0:
+		health = max(health, 0.0)
+	else:
+		health = min(health, max_health)
 	emit_signal("hit", health)
 	if health <= 0.0:
 		emit_signal("killed")
@@ -137,7 +145,7 @@ func _update_health(health_amount):
 
 func _update_energy(energy_amount):
 	energy += energy_amount
-	if energy_amount <= 0:
+	if energy <= 0.0:
 		energy = max(energy, 0.0)
 	else:
 		energy = min(energy, max_energy)
