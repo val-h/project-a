@@ -25,7 +25,6 @@ Music = ExtResource( 3 )
 [node name="UI" parent="." instance=ExtResource( 5 )]
 
 [node name="Enviorment" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="BackgroundStars" type="TileMap" parent="Enviorment"]
 tile_set = ExtResource( 6 )
@@ -49,39 +48,28 @@ format = 1
 
 [node name="SparklingStars" parent="Enviorment" instance=ExtResource( 8 )]
 position = Vector2( 700.164, 190.181 )
-frame = 0
 
 [node name="SparklingStars2" parent="Enviorment" instance=ExtResource( 8 )]
 position = Vector2( 755.217, 516.886 )
+frame = 0
 
 [node name="SparklingStars3" parent="Enviorment" instance=ExtResource( 8 )]
 position = Vector2( 1268.74, 578.257 )
-frame = 0
 
 [node name="SparklingStars4" parent="Enviorment" instance=ExtResource( 8 )]
 position = Vector2( 2394.93, 724.225 )
-frame = 0
 
 [node name="SparklingStars5" parent="Enviorment" instance=ExtResource( 8 )]
 position = Vector2( 1539.65, 1160.12 )
-frame = 0
 
 [node name="SparklingStars6" parent="Enviorment" instance=ExtResource( 8 )]
 position = Vector2( 3487.02, 721.832 )
-frame = 0
 
 [node name="Planet" parent="Enviorment" instance=ExtResource( 9 )]
 position = Vector2( 299.452, 156.788 )
 
 [node name="Planet2" parent="Enviorment" instance=ExtResource( 9 )]
 position = Vector2( 1794.9, 271.406 )
-
-[node name="StartPosition" type="Position2D" parent="."]
-position = Vector2( 380, 1280 )
-
-[node name="Portal" parent="." instance=ExtResource( 10 )]
-position = Vector2( 2872.43, 978.788 )
-next_scene = ExtResource( 11 )
 
 [node name="Obstacles" type="Node2D" parent="."]
 
@@ -107,7 +95,6 @@ position = Vector2( 2672.33, 575.328 )
 position = Vector2( 3602.6, 1343.61 )
 
 [node name="Enemies" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="BreadEnemy" parent="Enemies" groups=[
 "brea_enemies",
@@ -127,7 +114,6 @@ position = Vector2( 3670.47, 1528.88 )
 [node name="BreadEnemy4" parent="Enemies" groups=[
 "brea_enemies",
 ] instance=ExtResource( 13 )]
-editor/display_folded = true
 position = Vector2( 1031.82, 1204.57 )
 
 [node name="BreadEnemy5" parent="Enemies" groups=[
@@ -156,7 +142,6 @@ position = Vector2( 443.119, 873.183 )
 position = Vector2( 1192.3, 426.948 )
 
 [node name="Pickables" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="Battery" parent="Pickables" instance=ExtResource( 14 )]
 position = Vector2( 1047.55, 1477.91 )
@@ -175,3 +160,10 @@ position = Vector2( 3808.82, 36.8409 )
 
 [node name="Battery6" parent="Pickables" instance=ExtResource( 14 )]
 position = Vector2( 2911.35, 1543.23 )
+
+[node name="StartPosition" type="Position2D" parent="."]
+position = Vector2( 380, 1280 )
+
+[node name="Portal" parent="." instance=ExtResource( 10 )]
+position = Vector2( 2872.43, 978.788 )
+next_scene = ExtResource( 11 )

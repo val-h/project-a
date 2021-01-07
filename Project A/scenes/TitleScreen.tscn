@@ -107,22 +107,22 @@ text = "Continue"
 [node name="Start Game" type="Button" parent="HBoxContainer/VBoxContainer/MarginContainer/MenuOptions"]
 margin_top = 124.0
 margin_right = 880.0
-margin_bottom = 208.0
+margin_bottom = 209.0
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 5 )
 text = "Start Game"
 
 [node name="Settings" type="Button" parent="HBoxContainer/VBoxContainer/MarginContainer/MenuOptions"]
-margin_top = 248.0
+margin_top = 249.0
 margin_right = 880.0
-margin_bottom = 332.0
+margin_bottom = 333.0
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 5 )
 disabled = true
 text = "Settings"
 
 [node name="Exit" type="Button" parent="HBoxContainer/VBoxContainer/MarginContainer/MenuOptions"]
-margin_top = 372.0
+margin_top = 373.0
 margin_right = 880.0
 margin_bottom = 458.0
 size_flags_vertical = 3
