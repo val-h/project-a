@@ -10,3 +10,5 @@ export var health = 100
 # Energy values
 export var max_energy = 100
 export var energy = 100
+
+export var score = 0
