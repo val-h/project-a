@@ -46,7 +46,8 @@ func _on_EnemyDetector_body_entered(body):
 	# Different enemies, obstacles and traps would have different damage
 	# I'm still thinking of a no UI game where the playere isn't exposed
 	# to any variables from the game and plays by feel.
-	_update_health(-body.damage)
+	if body.name == "BreadEnemy":
+		_update_health(-body.damage)
 	
 # Dash cooldown
 #func _on_CooldownTimer_timeout():
