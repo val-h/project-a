@@ -5,9 +5,9 @@ export(PackedScene) var Baguette
 
 func _ready():
 	# Shoot
-	shot()
+	fire_shot()
 	
-func shot():
+func fire_shot():
 	var baguette = Baguette.instance()
-	get_parent().add_child(baguette)
-	baguette.position = position
+	add_child(baguette)
+	
