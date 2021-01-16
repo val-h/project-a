@@ -27,6 +27,6 @@ position = Vector2( -0.78386, -62.3686 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StompArea"]
-position = Vector2( 7.62939e-006, 13.2819 )
+position = Vector2( 7.62939e-06, 13.2819 )
 shape = SubResource( 2 )
 [connection signal="body_entered" from="StompArea" to="." method="_on_StompArea_body_entered"]

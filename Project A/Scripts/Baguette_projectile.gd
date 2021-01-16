@@ -1,15 +1,22 @@
-extends Area2D
+extends RigidBody2D
 
 export var damage = 25
 # just for testing
-export var speed = 500
+export var speed = Vector2(500, 500)
+var direction = Vector2.ZERO
 
 func _ready():
-	pass # Replace with function body.
+	pass
 
 func _physics_process(delta):
-	position.x -= speed * delta
+#	direction = rand_range(-PI / 4, PI / 4)
+#	rotation = direction
+#	position = speed * delta
+	pass
 
-# rework!
-func _on_Baguette_body_entered(body):
+# rework, doesn't work properly when changed from area to rigid body
+func _on_body_entered(body):
+	if body.collision_layer == 1:
+		body.emit_signal('projectile_hit', 5)
+		# body takes damage through hit singla
 	queue_free()

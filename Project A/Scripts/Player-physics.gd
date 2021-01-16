@@ -2,6 +2,7 @@ extends Humanoid
 
 signal killed
 signal hit(current_health)
+signal projectile_hit(damage)
 signal energy_changed(energy)
 
 onready var player_sprite = $Sprite
@@ -10,7 +11,6 @@ var max_health = PlayerVariables.max_health
 var health = PlayerVariables.health
 var max_energy = PlayerVariables.max_energy
 var energy = PlayerVariables.energy
-
 
 # Preferably a negative value
 export var jump_cost = -5
@@ -48,6 +48,9 @@ func _on_EnemyDetector_body_entered(body):
 	# to any variables from the game and plays by feel.
 	if body.name == "BreadEnemy":
 		_update_health(-body.damage)
+	
+func _on_projectile_hit(damage):
+	_update_health(-damage)
 	
 # Dash cooldown
 #func _on_CooldownTimer_timeout():
@@ -152,3 +155,5 @@ func _update_energy(energy_amount):
 		energy = min(energy, max_energy)
 	disable_jump = true if energy == 0.0 else false
 	emit_signal("energy_changed", energy)
+
+

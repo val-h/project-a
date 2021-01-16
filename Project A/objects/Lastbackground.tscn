@@ -1,14 +1,19 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://art/textures/background.png" type="Texture" id=1]
 [ext_resource path="res://art/textures/star_clusters/star cluster6.png" type="Texture" id=2]
 [ext_resource path="res://art/textures/star_clusters/star cluster4.png" type="Texture" id=3]
 [ext_resource path="res://art/textures/star_clusters/star cluster2.png" type="Texture" id=4]
+[ext_resource path="res://art/textures/parallax_jungle_03.png" type="Texture" id=5]
+[ext_resource path="res://art/textures/parallax_jungle_01.png" type="Texture" id=6]
+[ext_resource path="res://art/textures/parallax_jungle_02.png" type="Texture" id=7]
+[ext_resource path="res://art/textures/parallax_jungle_04.png" type="Texture" id=8]
 
 [node name="Lastbackground" type="CanvasLayer"]
 layer = -10
 
 [node name="background" type="TextureRect" parent="."]
+visible = false
 modulate = Color( 0.301961, 0.301961, 0.301961, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -22,6 +27,7 @@ __meta__ = {
 layer = -9
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
 
 [node name="star cluster4" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
 position = Vector2( 1097.25, 397.208 )
@@ -32,8 +38,37 @@ position = Vector2( 981.76, 429.921 )
 texture = ExtResource( 4 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
 motion_scale = Vector2( 1.1, 1.1 )
 
 [node name="star cluster6" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( 1053.19, 342.632 )
 texture = ExtResource( 2 )
+
+[node name="Jungle" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="Jungle"]
+
+[node name="parallax_jungle_04" type="Sprite" parent="Jungle/ParallaxLayer4"]
+position = Vector2( 960.217, 540.372 )
+texture = ExtResource( 8 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Jungle"]
+motion_scale = Vector2( 0.9, 1 )
+
+[node name="parallax_jungle_03" type="Sprite" parent="Jungle/ParallaxLayer"]
+position = Vector2( 2000, 541.722 )
+texture = ExtResource( 5 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="Jungle"]
+
+[node name="parallax_jungle_02" type="Sprite" parent="Jungle/ParallaxLayer2"]
+position = Vector2( 2802.65, 540.133 )
+texture = ExtResource( 7 )
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="Jungle"]
+motion_scale = Vector2( 1.1, 1 )
+
+[node name="parallax_jungle_01" type="Sprite" parent="Jungle/ParallaxLayer3"]
+position = Vector2( 3840, 540.387 )
+texture = ExtResource( 6 )

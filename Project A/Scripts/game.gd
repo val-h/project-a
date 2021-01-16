@@ -27,6 +27,7 @@ func _ready():
 	
 	# Possibly set by the level
 	#new_game()
+	randomize()
 	pass
 
 func _process(delta):

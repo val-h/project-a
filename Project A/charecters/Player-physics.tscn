@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Player-physics.gd" type="Script" id=1]
 [ext_resource path="res://art/charecters/toaster.png" type="Texture" id=2]
+[ext_resource path="res://art/objects/face_mask.png" type="Texture" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 23.2931
@@ -28,10 +29,10 @@ shape = SubResource( 1 )
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( -0.225937, -24.4011 )
 current = true
-limit_left = -100000
+limit_left = -10000
 limit_top = 0
 limit_right = 100000
-limit_bottom = 1080
+limit_bottom = 0
 limit_smoothed = true
 drag_margin_left = 0.0
 drag_margin_right = 0.0
@@ -44,5 +45,11 @@ collision_mask = 14
 position = Vector2( 0.451874, -1.63985 )
 rotation = 1.5708
 shape = SubResource( 2 )
+
+[node name="face_mask" type="Sprite" parent="."]
+position = Vector2( 0.273552, -40.6338 )
+scale = Vector2( 0.01, 0.01 )
+texture = ExtResource( 3 )
+[connection signal="projectile_hit" from="." to="." method="_on_projectile_hit"]
 [connection signal="area_entered" from="EnemyDetector" to="." method="_on_EnemyDetector_area_entered"]
 [connection signal="body_entered" from="EnemyDetector" to="." method="_on_EnemyDetector_body_entered"]
