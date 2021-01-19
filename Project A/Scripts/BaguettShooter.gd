@@ -11,6 +11,14 @@ func _on_ShootTimer_timeout():
 func _ready():
 	$ShootTimer.wait_time = reload_time
 	
+# Used for the ray casts
+func _physics_process(delta):
+	var space_rid = get_world_2d().space
+	var space_state = Physics2DServer.space_get_direct_state(space_rid)
+	
+	# the ray
+	var result = space_state.intersect_ray(Vector2(0, 0), Vector2(50, 300))
+
 func _process(delta):
 	if reloaded:
 		fire_shot()
@@ -29,3 +37,8 @@ func fire_shot():
 	baguette.linear_velocity = Vector2(500, 0)
 	baguette.linear_velocity = baguette.linear_velocity.rotated(direction)
 	
+# Implement ray casting so that the shooter aims at the player
+# and after a short delay and animation, shoots
+# https://docs.godotengine.org/en/stable/tutorials/physics/ray-casting.html
+
+
